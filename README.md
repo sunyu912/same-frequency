@@ -6,4 +6,4 @@ Bilingual (中文 / English) landing page for **Same Frequency**, a student rese
 - `assets/` — photography
 
 Language toggle is in the top-right; the choice is remembered per browser.
-The sign-up buttons use `mailto:hello@example.com` — replace with the real contact address.
+Sign-ups are saved in the visitor’s browser (localStorage key `sf-signups`). Open `/#signups` in the same browser to view them, download a CSV, or clear them.
