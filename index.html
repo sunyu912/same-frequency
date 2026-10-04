@@ -1,0 +1,1144 @@
+<!doctype html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>同频 Same Frequency</title>
+<meta name="description" content="同频 Same Frequency — 一个关于代际沟通、沟通差异与神经多样性的学生研究项目。A student research project on intergenerational communication, communication differences and neurodiversity.">
+<meta property="og:title" content="同频 Same Frequency">
+<meta property="og:description" content="有意义的代际连接，需要的是更多交流，还是更匹配的交流方式？ Does meaningful connection across generations need more communication — or better-matched communication?">
+<meta property="og:image" content="assets/hero.jpg">
+<meta name="theme-color" content="#F3EEE4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231D1B17'/%3E%3Cpath d='M8 32c4-12 8-12 12 0s8 12 12 0 8-12 12 0 8 12 12 0' fill='none' stroke='%23E07A5F' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M8 32c8-16 16-16 24 0s16 16 24 0' fill='none' stroke='%23A8C5BC' stroke-width='3' stroke-linecap='round' opacity='.8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EEE4;
+  --paper-2:#EAE2D3;
+  --paper-3:#E2D8C5;
+  --ink:#1D1B17;
+  --ink-2:#4F493F;
+  --ink-3:#8A8274;
+  --line:rgba(29,27,23,.14);
+  --line-2:rgba(29,27,23,.08);
+  --youth:#C8553D;
+  --youth-soft:#E07A5F;
+  --elder:#3F6F66;
+  --elder-soft:#A8C5BC;
+  --ochre:#C79A4B;
+  --night:#14130F;
+  --night-2:#1E1C17;
+  --cream:#EFE7D8;
+
+  --display:"Instrument Serif","Noto Serif SC","Songti SC",serif;
+  --serif-zh:"Noto Serif SC","Songti SC",serif;
+  --sans:"Inter","Noto Sans SC","PingFang SC",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+
+  --gutter:clamp(16px,4vw,56px);
+  --max:1320px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--youth);color:var(--paper)}
+
+/* language switching */
+html[data-lang="zh"] body [lang="en"]{display:none!important}
+html[data-lang="en"] body [lang="zh"]{display:none!important}
+body [lang="zh"]{letter-spacing:.02em}
+body [lang="zh"] em{font-style:normal}
+h2,.core-q p,.mani-lines p,.hero-q,.but,.not{text-wrap:balance}
+
+/* grain */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--ink-3)}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%}
+.dot.y{background:var(--youth)} .dot.e{background:var(--elder)}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,border-color .4s,padding .4s;border-bottom:1px solid transparent}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;transition:height .4s var(--ease)}
+.nav.scrolled{background:rgba(243,238,228,.82);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-color:var(--line-2)}
+.nav.scrolled .wrap{height:62px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600}
+.brand svg{width:34px;height:20px}
+.brand .b-zh{font-family:var(--serif-zh);font-weight:900;font-size:20px;letter-spacing:.06em}
+.brand .b-en{font-family:var(--display);font-style:italic;font-size:20px;font-weight:400;color:var(--ink-2)}
+.nav-links{display:flex;gap:32px;font-size:14px;color:var(--ink-2)}
+.nav-links a{position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;font-size:13px;position:relative}
+.lang button{position:relative;z-index:1;padding:5px 12px;border-radius:999px;transition:color .3s;color:var(--ink-3)}
+.lang button.on{color:var(--paper)}
+.lang .pill{position:absolute;top:3px;bottom:3px;left:3px;border-radius:999px;background:var(--ink);transition:transform .45s var(--ease),width .45s var(--ease)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-size:15px;font-weight:500;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s;white-space:nowrap}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-dark:hover{background:var(--youth)}
+.btn-ghost{border:1px solid var(--line);}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.nav .btn{padding:9px 18px;font-size:14px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;padding:132px 0 0;display:flex;flex-direction:column;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(32px,5vw,80px);align-items:center;flex:1}
+.hero-title{margin:28px 0 30px;line-height:.86}
+.hero-title .t-zh{display:block;font-family:var(--serif-zh);font-weight:900;font-size:clamp(104px,15vw,232px);letter-spacing:.02em;line-height:.95}
+.hero-title .t-en{display:block;font-family:var(--display);font-weight:400;font-size:clamp(46px,6.2vw,96px);letter-spacing:-.01em;margin-top:6px}
+.hero-title .t-en em{color:var(--youth)}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.tag{padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;color:var(--ink-2);background:rgba(255,255,255,.25)}
+.tag .x{color:var(--ink-3);margin:0 2px}
+.hero-q{max-width:560px;font-family:var(--display);font-size:clamp(21px,1.9vw,27px);line-height:1.4;color:var(--ink-2);margin-bottom:38px;padding-left:22px;border-left:2px solid var(--youth)}
+.hero-q [lang="zh"]{font-family:var(--serif-zh);font-size:.86em;line-height:1.75}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+.hero-visual{position:relative;justify-self:end;width:100%;max-width:500px}
+.arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 18px 18px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(29,27,23,.45)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:52% 40%;transform:scale(1.08);transition:transform 1.6s var(--ease)}
+.loaded .arch img{transform:scale(1)}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,19,15,.35))}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(243,238,228,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:13px;box-shadow:0 16px 40px -18px rgba(29,27,23,.4);z-index:2}
+.chip .mono{font-size:10.5px;color:var(--ink-3)}
+.chip b{font-weight:600;display:block;line-height:1.3}
+.chip-1{left:-38px;top:22%;animation:float 7s ease-in-out infinite}
+.chip-2{right:-26px;bottom:18%;animation:float 8s ease-in-out -3s infinite}
+.chip svg{flex:none}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.orbit{position:absolute;inset:-28px;border:1px dashed var(--line);border-radius:999px 999px 30px 30px;pointer-events:none}
+
+.wave-band{position:relative;height:150px;margin-top:40px}
+.wave-band canvas{position:absolute;inset:0;width:100%;height:100%}
+.wave-legend{position:absolute;left:var(--gutter);bottom:14px;display:flex;gap:22px;font-size:12px;color:var(--ink-3);z-index:2}
+.wave-legend span{display:flex;align-items:center;gap:8px}
+.scroll-hint{position:absolute;right:var(--gutter);bottom:14px;z-index:2;color:var(--ink-3);display:flex;align-items:center;gap:10px}
+.scroll-hint i{width:1px;height:28px;background:var(--ink-3);position:relative;overflow:hidden}
+.scroll-hint i::after{content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;background:var(--ink);animation:drip 2s var(--ease) infinite}
+@keyframes drip{to{top:100%}}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative}
+.sec{padding:clamp(96px,13vw,180px) 0}
+.sec-head{display:grid;grid-template-columns:1fr 2fr;gap:40px;margin-bottom:clamp(48px,6vw,88px);align-items:start}
+.sec-head>.sec-num{padding-top:1.2em}
+.sec-num{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-3);display:flex;gap:14px;align-items:center;text-transform:uppercase}
+.sec-num b{color:var(--youth);font-weight:500}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,5.4vw,80px);line-height:1.04;letter-spacing:-.015em}
+h2 [lang="zh"]{font-family:var(--serif-zh);font-weight:600;font-size:.74em;line-height:1.28;letter-spacing:.01em}
+h2 em{font-style:italic;color:var(--youth)}
+h2 [lang="zh"] em{font-style:normal}
+h3{font-weight:500}
+.lead{font-size:clamp(18px,1.5vw,21px);color:var(--ink-2);line-height:1.7;max-width:640px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* ---------- PREMISE ---------- */
+.premise-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px)}
+.contrast{padding:clamp(28px,3.5vw,48px);border-radius:24px;position:relative;overflow:hidden}
+.contrast.old{border:1px solid var(--line);color:var(--ink-3)}
+.contrast.new{background:var(--ink);color:var(--cream)}
+.contrast .mono{display:block;margin-bottom:26px}
+.contrast.new .mono{color:var(--youth-soft)}
+.contrast p.big{font-family:var(--display);font-size:clamp(26px,2.6vw,38px);line-height:1.25}
+.contrast p.big [lang="zh"]{font-family:var(--serif-zh);font-size:.82em;line-height:1.6}
+.contrast.old p.big{text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:rgba(29,27,23,.35)}
+.contrast .small{margin-top:22px;font-size:15px;line-height:1.75;opacity:.8}
+.contrast.new svg.bgwave{position:absolute;right:-10%;bottom:-10%;width:80%;opacity:.15}
+.core-q{margin-top:clamp(64px,8vw,120px);text-align:center}
+.core-q .mono{color:var(--ink-3)}
+.core-q p{font-family:var(--display);font-size:clamp(34px,4.6vw,68px);line-height:1.15;margin-top:22px;letter-spacing:-.01em}
+.core-q p [lang="zh"]{font-family:var(--serif-zh);font-weight:600;font-size:.78em;line-height:1.5}
+.core-q s{color:var(--ink-3);text-decoration-thickness:2px;text-decoration-color:var(--youth)}
+.core-q mark{background:none;color:var(--elder);position:relative}
+.core-q mark svg{position:absolute;left:0;bottom:-.18em;width:100%;height:.3em;overflow:visible}
+.core-q mark path{stroke:var(--elder);stroke-width:3;fill:none;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.8s var(--ease) .4s}
+.core-q.in mark path{stroke-dashoffset:0}
+
+/* ---------- MANIFESTO (dark) ---------- */
+.dark{background:var(--night);color:var(--cream)}
+.manifesto{padding:clamp(110px,14vw,200px) 0;overflow:hidden}
+.mani-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center}
+.mani-lines p{font-family:var(--display);font-size:clamp(38px,5.4vw,84px);line-height:1.08;letter-spacing:-.015em;color:rgba(239,231,216,.16);transition:color 1.2s var(--ease)}
+.mani-lines p [lang="zh"]{font-family:var(--serif-zh);font-weight:600;font-size:.64em;line-height:1.55;letter-spacing:.03em}
+.mani-lines p.lit{color:var(--cream)}
+.mani-lines p em{font-style:italic}
+.mani-lines p.lit em{color:var(--youth-soft)}
+.mani-lines p+p{margin-top:.25em}
+.mani-src{margin-top:40px;color:rgba(239,231,216,.45)}
+.lissa{position:relative;aspect-ratio:1;max-width:460px;justify-self:center;width:100%}
+.lissa canvas{width:100%;height:100%}
+.lissa-ring{position:absolute;inset:0;border:1px solid rgba(239,231,216,.1);border-radius:50%}
+.lissa-ring.r2{inset:12%;border-style:dashed;border-color:rgba(239,231,216,.08)}
+.listen{margin-top:28px;display:flex;align-items:center;gap:18px;justify-content:center;flex-wrap:wrap}
+.listen-btn{display:flex;align-items:center;gap:14px;padding:12px 22px 12px 12px;border:1px solid rgba(239,231,216,.2);border-radius:999px;transition:border-color .3s,background .3s}
+.listen-btn:hover{border-color:var(--youth-soft)}
+.listen-btn .ic{width:38px;height:38px;border-radius:50%;background:var(--cream);color:var(--night);display:grid;place-items:center}
+.listen-btn.on{background:rgba(224,122,95,.12);border-color:var(--youth-soft)}
+.listen-cap{font-size:13.5px;color:rgba(239,231,216,.55);max-width:240px;line-height:1.55}
+.hz{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(239,231,216,.45);text-align:center;margin-top:14px}
+.hz b{font-weight:400;color:var(--youth-soft)} .hz i{font-style:normal;color:var(--elder-soft)}
+
+/* ---------- SPECTRUM ---------- */
+.spectrum{background:var(--paper-2)}
+.map{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,3.4vw,48px);box-shadow:0 30px 80px -50px rgba(29,27,23,.35)}
+.map-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;margin-bottom:34px;padding-bottom:26px;border-bottom:1px solid var(--line-2)}
+.presets{display:flex;gap:8px;flex-wrap:wrap}
+.presets button{padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--ink-2);transition:all .3s}
+.presets button:hover{border-color:var(--ink)}
+.presets button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.legend{display:flex;gap:20px;font-size:13.5px;color:var(--ink-2)}
+.legend span{display:flex;gap:8px;align-items:center}
+.map-story{font-family:var(--display);font-size:clamp(22px,2.2vw,30px);line-height:1.3;margin-bottom:30px;min-height:1.3em;transition:opacity .4s}
+.map-story [lang="zh"]{font-family:var(--serif-zh);font-size:.82em;font-weight:600}
+.rows{display:grid;gap:4px}
+.row{display:grid;grid-template-columns:minmax(180px,1fr) 2.4fr 92px;gap:24px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line-2)}
+.row:last-child{border-bottom:0}
+.row-l b{display:block;font-weight:500;font-size:16px;line-height:1.35}
+.row-l .mono{font-size:10.5px;color:var(--ink-3);text-transform:none;letter-spacing:.04em}
+.track{position:relative;height:36px}
+.track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.ticks{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.ticks i{width:1px;height:9px;background:var(--line)}
+.gap{position:absolute;top:50%;height:4px;margin-top:-2px;border-radius:2px;background:var(--line);transition:left .9s var(--ease),width .9s var(--ease),background .5s}
+.row.mis .gap{background:linear-gradient(90deg,rgba(200,85,61,.55),rgba(63,111,102,.55))}
+.knob{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;transition:left .9s var(--ease);box-shadow:0 0 0 4px var(--paper)}
+.knob.y{background:var(--youth)} .knob.e{background:var(--elder)}
+.row-r{font-family:var(--mono);font-size:11px;text-align:right;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.row.mis .row-r{color:var(--youth)}
+.scale{display:grid;grid-template-columns:minmax(180px,1fr) 2.4fr 92px;gap:24px;margin-top:10px;color:var(--ink-3)}
+.scale>div{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px}
+.note{margin-top:26px;font-size:13px;color:var(--ink-3);display:flex;gap:10px;align-items:flex-start}
+
+/* ---------- METHOD ---------- */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);position:relative}
+.phase{padding:38px 32px 44px 0;border-bottom:1px solid var(--line);position:relative}
+.phase:not(:nth-child(3n+1)){padding-left:32px;border-left:1px solid var(--line)}
+.phase .ph-n{display:flex;justify-content:space-between;align-items:center;margin-bottom:46px}
+.phase .ph-n span{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.1em}
+.phase .ph-n svg{width:84px;height:22px}
+.phase h3{font-family:var(--display);font-size:42px;line-height:1;margin-bottom:6px;font-weight:400}
+.phase h3 [lang="zh"]{font-family:var(--serif-zh);font-weight:600;font-size:.8em}
+.phase .sub{font-size:13px;color:var(--ink-3);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
+.phase p{font-size:15.5px;color:var(--ink-2);line-height:1.7}
+.phase dl{margin-top:22px;display:grid;gap:12px}
+.phase dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.phase dd{font-size:15px;line-height:1.55}
+.phase:hover h3{color:var(--youth)}
+.phase h3{transition:color .4s}
+
+/* ---------- MODES ---------- */
+.modes{background:var(--paper-2)}
+.mode-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.4vw,32px)}
+.mode{background:var(--paper);border-radius:26px;overflow:hidden;border:1px solid var(--line-2);display:flex;flex-direction:column;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.mode:hover{transform:translateY(-6px);box-shadow:0 40px 70px -40px rgba(29,27,23,.4)}
+.mode-img{position:relative;aspect-ratio:16/10;overflow:hidden}
+.mode-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.mode:hover .mode-img img{transform:scale(1.05)}
+.mode-img .idx{position:absolute;top:18px;left:18px;padding:6px 12px;border-radius:999px;background:rgba(243,238,228,.9);font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+.mode-body{padding:clamp(24px,2.6vw,36px);display:flex;flex-direction:column;gap:18px;flex:1}
+.mode-body h3{font-family:var(--display);font-size:clamp(30px,2.6vw,38px);font-weight:400;line-height:1.05}
+.mode-body h3 small{display:block;font-family:var(--serif-zh);font-size:17px;font-weight:600;color:var(--ink-3);margin-top:8px;letter-spacing:.06em}
+.mode-body>p{color:var(--ink-2);font-size:16px}
+.mode-meta{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:auto;padding-top:20px;border-top:1px solid var(--line-2)}
+.mode-meta dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.mode-meta dd{font-size:14.5px;line-height:1.55}
+.mode-meta .ask dd{font-family:var(--display);font-style:italic;font-size:18px;color:var(--elder)}
+.mode-meta .ask dd [lang="zh"]{font-family:var(--serif-zh);font-style:normal;font-size:15px}
+
+/* ---------- QUESTIONS MARQUEE ---------- */
+.qs{padding:clamp(90px,11vw,150px) 0;overflow:hidden}
+.marquee{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee+.marquee{margin-top:18px}
+.mq-track{display:flex;gap:18px;padding-right:18px;flex:none;animation:mq 90s linear infinite}
+.marquee.rev .mq-track{animation-direction:reverse;animation-duration:110s}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-100%)}}
+.qcard{flex:none;width:clamp(290px,30vw,400px);padding:26px 28px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.3);display:flex;flex-direction:column;gap:18px}
+.qcard .who{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.qcard p{font-family:var(--display);font-size:21px;line-height:1.35}
+.qcard p [lang="zh"]{font-family:var(--serif-zh);font-size:16.5px;line-height:1.75}
+.qcard.e{background:rgba(63,111,102,.07)}
+.qs-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+
+/* ---------- OUTPUTS ---------- */
+.outputs-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(16px,2vw,24px)}
+.out{border-radius:26px;padding:clamp(26px,2.8vw,38px);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;min-height:280px}
+.out .mono{color:var(--ink-3)}
+.out h3{font-family:var(--display);font-size:clamp(28px,2.4vw,36px);font-weight:400;line-height:1.1}
+.out h3 [lang="zh"]{font-family:var(--serif-zh);font-weight:600;font-size:.78em;line-height:1.4}
+.out p{font-size:15.5px;color:var(--ink-2);line-height:1.7}
+.out.c2{grid-column:span 2}.out.c3{grid-column:span 3}.out.c4{grid-column:span 4}
+.out.radio{background:var(--night);color:var(--cream);border:0}
+.out.radio .mono{color:var(--youth-soft)}
+.out.radio p{color:rgba(239,231,216,.7)}
+.player{margin-top:auto;display:flex;align-items:center;gap:18px;padding:16px;border-radius:18px;background:rgba(239,231,216,.06);border:1px solid rgba(239,231,216,.1)}
+.player .pbtn{width:46px;height:46px;border-radius:50%;background:var(--youth-soft);color:var(--night);display:grid;place-items:center;flex:none}
+.player .bars{flex:1;display:flex;align-items:center;gap:3px;height:40px}
+.player .bars i{flex:1;background:rgba(239,231,216,.3);border-radius:2px}
+.player .bars i.p{background:var(--youth-soft)}
+.player .t{font-family:var(--mono);font-size:11px;color:rgba(239,231,216,.5)}
+.eps{display:flex;gap:8px;flex-wrap:wrap}
+.eps>span{font-family:var(--mono);font-size:10.5px;padding:5px 10px;border-radius:999px;border:1px solid rgba(239,231,216,.18);color:rgba(239,231,216,.65);letter-spacing:.06em}
+.out.menu{background:var(--paper-3);border:0}
+.menu-list{margin-top:auto;display:grid;gap:8px}
+.menu-list div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:15px;padding:8px 0;border-bottom:1px dotted rgba(29,27,23,.25)}
+.menu-list div span:last-child{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.out.map-out{background:linear-gradient(160deg,#E7DECD,#DCE5DF)}
+.mini-map{margin-top:auto;display:grid;gap:9px}
+.mini-map div{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.mini-map u{position:relative;height:1px;background:rgba(29,27,23,.2);text-decoration:none}
+.mini-map u::before,.mini-map u::after{content:"";position:absolute;top:-4px;width:9px;height:9px;border-radius:50%}
+.mini-map u::before{left:var(--a);background:var(--youth)}
+.mini-map u::after{left:var(--b);background:var(--elder)}
+.out .bignum{font-family:var(--display);font-size:84px;line-height:.9;color:var(--youth)}
+
+/* ---------- ETHICS ---------- */
+.ethics{background:var(--paper-2)}
+.eth-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(40px,6vw,100px);align-items:start}
+.eth-sticky{position:sticky;top:120px}
+.eth-photo{margin-top:40px;border-radius:22px;overflow:hidden;aspect-ratio:4/3}
+.eth-photo img{width:100%;height:100%;object-fit:cover}
+.eth-list{counter-reset:e}
+.eth-item{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:30px 0;border-top:1px solid var(--line)}
+.eth-item:last-child{border-bottom:1px solid var(--line)}
+.eth-item::before{counter-increment:e;content:counter(e,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--youth);letter-spacing:.1em;padding-top:6px}
+.eth-item h3{font-size:19px;font-weight:500;line-height:1.45;margin-bottom:6px}
+.eth-item p{font-size:15.5px;color:var(--ink-2)}
+
+/* ---------- TIMELINE ---------- */
+.tl{overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 10px;cursor:grab}
+.tl::-webkit-scrollbar{display:none}
+.tl-track{display:grid;grid-template-columns:repeat(10,minmax(210px,1fr));position:relative;min-width:max-content}
+.tl-track::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:var(--line)}
+.wk{padding-right:26px;position:relative}
+.wk .node{width:14px;height:14px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);margin:20px 0 26px;position:relative;z-index:1;transition:background .4s}
+.wk:hover .node{background:var(--youth);border-color:var(--youth)}
+.wk.ph-o .node{border-color:var(--youth)}
+.wk.ph-d .node{border-color:var(--elder)}
+.wk .mono{color:var(--ink-3);display:block;margin-bottom:10px}
+.wk h4{font-weight:500;font-size:16px;line-height:1.45;margin-bottom:10px}
+.wk p{font-size:14px;color:var(--ink-2);line-height:1.6}
+.tl-hint{margin-top:28px;display:flex;justify-content:space-between;color:var(--ink-3);flex-wrap:wrap;gap:12px}
+
+/* ---------- SUCCESS / CYNTHIA ---------- */
+.success{background:var(--night);color:var(--cream)}
+.succ-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px)}
+.not{font-family:var(--display);font-size:clamp(28px,3vw,42px);line-height:1.25;color:rgba(239,231,216,.35);text-decoration:line-through;text-decoration-thickness:1px;margin-bottom:22px}
+.not [lang="zh"]{font-family:var(--serif-zh);font-size:.8em}
+.but{font-family:var(--display);font-size:clamp(28px,3vw,42px);line-height:1.25}
+.but [lang="zh"]{font-family:var(--serif-zh);font-size:.8em;font-weight:600}
+.but em{color:var(--youth-soft)}
+.succ-list{display:grid;gap:0}
+.succ-list li{list-style:none;display:grid;grid-template-columns:40px 1fr;gap:12px;padding:20px 0;border-top:1px solid rgba(239,231,216,.12);font-size:16.5px;color:rgba(239,231,216,.85)}
+.succ-list li span{font-family:var(--mono);font-size:12px;color:var(--elder-soft);padding-top:4px}
+.quote-block{margin-top:clamp(80px,10vw,140px);display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,60px);align-items:center;padding-top:clamp(50px,6vw,80px);border-top:1px solid rgba(239,231,216,.12)}
+.avatar{width:clamp(110px,12vw,160px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--youth-soft),var(--youth) 45%,#7C2F20);display:grid;place-items:center;font-family:var(--display);font-style:italic;font-size:clamp(44px,5vw,64px);color:var(--cream);position:relative}
+.avatar::after{content:"";position:absolute;inset:-12px;border:1px solid rgba(239,231,216,.2);border-radius:50%}
+.quote-block blockquote{font-family:var(--display);font-size:clamp(26px,2.8vw,40px);line-height:1.3}
+.quote-block blockquote [lang="zh"]{font-family:var(--serif-zh);font-size:.78em;line-height:1.7}
+.quote-block cite{display:block;margin-top:20px;font-style:normal;color:rgba(239,231,216,.5)}
+
+/* ---------- JOIN ---------- */
+.join-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin-top:10px}
+.join-card{border-radius:28px;padding:clamp(28px,3.4vw,48px);display:flex;flex-direction:column;gap:20px;min-height:380px;position:relative;overflow:hidden}
+.join-card.y{background:linear-gradient(150deg,#F1D7CB,#E9C3B3)}
+.join-card.e{background:linear-gradient(150deg,#D4E2DC,#BFD3CB)}
+.join-card h3{font-family:var(--display);font-size:clamp(34px,3.4vw,52px);font-weight:400;line-height:1.05}
+.join-card h3 [lang="zh"]{font-family:var(--serif-zh);font-weight:600;font-size:.8em}
+.join-card ul{list-style:none;display:grid;gap:10px}
+.join-card li{display:flex;gap:12px;font-size:16px;line-height:1.55}
+.join-card li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;margin-top:.62em;background:currentColor;opacity:.5}
+.join-card .btn{margin-top:auto;align-self:flex-start}
+.join-card svg.deco{position:absolute;right:-30px;top:-20px;width:240px;opacity:.35}
+.invite{margin-top:clamp(28px,3vw,40px);padding:clamp(26px,3vw,40px);border:1px dashed var(--line);border-radius:24px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+.invite .mono{color:var(--ink-3);padding-top:4px}
+.invite p{font-family:var(--display);font-size:clamp(19px,1.7vw,23px);line-height:1.5;color:var(--ink-2)}
+.invite p [lang="zh"]{font-family:var(--serif-zh);font-size:.82em;line-height:1.95}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--night);color:var(--cream);padding:clamp(80px,10vw,130px) 0 36px;overflow:hidden}
+.foot-big{display:flex;align-items:baseline;gap:clamp(14px,2vw,30px);flex-wrap:wrap;line-height:.9}
+.foot-big .z{font-family:var(--serif-zh);font-weight:900;font-size:clamp(90px,17vw,260px)}
+.foot-big .e{font-family:var(--display);font-style:italic;font-size:clamp(48px,8vw,128px);color:var(--youth-soft)}
+.foot-wave{height:80px;margin:40px 0 50px}
+.foot-wave canvas{width:100%;height:100%}
+.foot-row{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(239,231,216,.12);font-size:14px;color:rgba(239,231,216,.55)}
+.foot-row a:hover{color:var(--cream)}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1080px){
+  .nav-links{display:none}
+  .phases{grid-template-columns:repeat(2,1fr)}
+  .phase:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .phase:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}
+  .outputs-grid{grid-template-columns:repeat(2,1fr)}
+  .out.c2,.out.c3,.out.c4{grid-column:span 1}
+  .out.radio{grid-column:span 2}
+}
+@media (max-width:860px){
+  body{font-size:16px}
+  .hero{padding-top:110px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{justify-self:center;max-width:380px;margin-top:10px}
+  .chip-1{left:-12px}.chip-2{right:-8px}
+  .sec-head{grid-template-columns:1fr;gap:20px}
+  .premise-grid,.mani-grid,.mode-grid,.eth-grid,.succ-grid,.join-grid{grid-template-columns:1fr}
+  .eth-sticky{position:static}
+  .row,.scale{grid-template-columns:1fr;gap:6px}
+  .scale>div:first-child,.scale>div:last-child{display:none}
+  .row-r{text-align:left}
+  .lissa{max-width:340px}
+  .invite{grid-template-columns:1fr;gap:12px}
+}
+@media (max-width:600px){
+  .nav .btn{display:none}
+  .brand .b-en{display:none}
+  .phases{grid-template-columns:1fr}
+  .phase,.phase:nth-child(even){padding-left:0!important;border-left:0!important}
+  .outputs-grid{grid-template-columns:1fr}
+  .out.radio{grid-column:span 1}
+  .mode-meta{grid-template-columns:1fr}
+  .quote-block{grid-template-columns:1fr}
+  .chip{font-size:12px;padding:8px 11px}
+  .chip-1{left:-6px;top:12%}.chip-2{right:-4px}
+  .orbit{inset:-14px}
+  .wave-band{height:110px}
+  .player .bars{gap:2px}
+  .player .bars i:nth-child(n+31){display:none}
+  .scroll-hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="同频 Same Frequency">
+      <svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 10c2.5-7 5-7 7.5 0s5 7 7.5 0 5-7 7.5 0 5 7 7.5 0" fill="none" stroke="#C8553D" stroke-width="2" stroke-linecap="round"/><path d="M1 10c4-10 8-10 16 0s12 10 16 0" fill="none" stroke="#3F6F66" stroke-width="1.6" stroke-linecap="round" opacity=".8"/></svg>
+      <span class="b-zh">同频</span><span class="b-en">Same Frequency</span>
+    </a>
+    <div class="nav-links">
+      <a href="#premise"><span lang="zh">起点</span><span lang="en">Premise</span></a>
+      <a href="#spectrum"><span lang="zh">频谱</span><span lang="en">Spectrum</span></a>
+      <a href="#method"><span lang="zh">方法</span><span lang="en">Method</span></a>
+      <a href="#modes"><span lang="zh">交流方式</span><span lang="en">Formats</span></a>
+      <a href="#outputs"><span lang="zh">成果</span><span lang="en">Outputs</span></a>
+      <a href="#ethics"><span lang="zh">伦理</span><span lang="en">Ethics</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <span class="pill" aria-hidden="true"></span>
+        <button data-set="zh">中文</button>
+        <button data-set="en">EN</button>
+      </div>
+      <a href="#join" class="btn btn-dark"><span lang="zh">参与研究</span><span lang="en">Take part</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow mono reveal"><span lang="zh">学生研究项目 · 代际沟通</span><span lang="en">A student research project · Intergenerational communication</span></div>
+      <h1 class="hero-title reveal d1">
+        <span class="t-zh">同频</span>
+        <span class="t-en">Same <em>Frequency</em></span>
+      </h1>
+      <div class="hero-tags reveal d2">
+        <span class="tag"><span lang="zh">代际沟通</span><span lang="en">Generations</span></span>
+        <span class="tag"><span lang="zh">沟通差异</span><span lang="en">Communication differences</span></span>
+        <span class="tag"><span lang="zh">神经多样性</span><span lang="en">Neurodiversity</span></span>
+      </div>
+      <p class="hero-q reveal d3">
+        <span lang="zh">“真正的理解是否一定需要更亲密、更频繁的交流？还是需要找到更适合彼此的交流方式？”</span>
+        <span lang="en">“Does real understanding always need closer, more frequent conversation — or a way of communicating that fits both people?”</span>
+      </p>
+      <div class="hero-cta reveal d4">
+        <a href="#premise" class="btn btn-dark"><span lang="zh">了解项目</span><span lang="en">Explore the project</span> <span class="arr">→</span></a>
+        <a href="#join" class="btn btn-ghost"><span lang="zh">成为受访者</span><span lang="en">Join an interview</span></a>
+      </div>
+    </div>
+    <div class="hero-visual reveal d2">
+      <div class="orbit"></div>
+      <div class="arch"><img src="assets/hero.jpg" alt="一位长辈与一位年轻人坐在窗边长椅上，共用一副耳机听音乐" fetchpriority="high"></div>
+      <div class="chip chip-1">
+        <svg width="30" height="16" viewBox="0 0 30 16"><path d="M1 8c2-6 4-6 6 0s4 6 6 0 4-6 6 0 4 6 6 0 4-6 4-6" fill="none" stroke="#C8553D" stroke-width="2" stroke-linecap="round"/></svg>
+        <div><span class="mono">Y · <span lang="zh">青年</span><span lang="en">Youth</span></span><b><span lang="zh">想快点接话</span><span lang="en">Quick to reply</span></b></div>
+      </div>
+      <div class="chip chip-2">
+        <svg width="30" height="16" viewBox="0 0 30 16"><path d="M1 8c4-9 9-9 14 0s10 9 14 0" fill="none" stroke="#3F6F66" stroke-width="2" stroke-linecap="round"/></svg>
+        <div><span class="mono">O · <span lang="zh">长辈</span><span lang="en">Elder</span></span><b><span lang="zh">需要多一点时间</span><span lang="en">Needs a little more time</span></b></div>
+      </div>
+    </div>
+  </div>
+  <div class="wave-band" aria-hidden="true">
+    <canvas id="heroWave"></canvas>
+    <div class="wave-legend mono">
+      <span><i class="dot y"></i><span lang="zh">青年节奏</span><span lang="en">Youth rhythm</span></span>
+      <span><i class="dot e"></i><span lang="zh">长辈节奏</span><span lang="en">Elder rhythm</span></span>
+    </div>
+    <div class="scroll-hint mono"><span lang="zh">向下滚动</span><span lang="en">Scroll</span><i></i></div>
+  </div>
+</header>
+
+<!-- ================= PREMISE ================= -->
+<section class="sec" id="premise">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num reveal"><b>01</b><span lang="zh">起点</span><span lang="en">Premise</span></div>
+      <h2 class="reveal d1">
+        <span lang="zh">不是“多陪陪老人”，<br>而是<em>换一种方式</em>听见彼此。</span>
+        <span lang="en">Not “spend more time with elders” — but <em>a different way</em> of hearing each other.</span>
+      </h2>
+    </div>
+    <div class="premise-grid">
+      <div class="contrast old reveal">
+        <span class="mono"><span lang="zh">常规公益叙事</span><span lang="en">The usual story</span></span>
+        <p class="big"><span lang="zh">老人孤独，所以年轻人应该多陪伴、多聊天。</span><span lang="en">Older people are lonely, so young people should visit and talk more.</span></p>
+        <p class="small"><span lang="zh">默认“更多交流 = 更多理解”，默认所有人都想用同一种方式被陪伴。</span><span lang="en">It assumes more talk means more understanding — and that everyone wants to be kept company in the same way.</span></p>
+      </div>
+      <div class="contrast new reveal d1">
+        <svg class="bgwave" viewBox="0 0 400 200" aria-hidden="true"><path d="M0 100c25-70 50-70 75 0s50 70 75 0 50-70 75 0 50 70 75 0 50-70 75 0" stroke="#E07A5F" stroke-width="3" fill="none"/><path d="M0 100c50-90 100-90 150 0s100 90 150 0 100-90 100-90" stroke="#A8C5BC" stroke-width="3" fill="none"/></svg>
+        <span class="mono"><span lang="zh">同频的提问</span><span lang="en">What Same Frequency asks</span></span>
+        <p class="big"><span lang="zh">不同年龄、性格、沟通与认知方式的人，对“被理解”的需求是否不同？</span><span lang="en">Do people of different ages, temperaments and ways of thinking need different things in order to feel understood?</span></p>
+        <p class="small"><span lang="zh">亲缘关系、交流频率或观点一致，并不自动等于理解。有时，放慢节奏、等待、允许沉默，反而让人更容易被听见。</span><span lang="en">Being family, talking often or agreeing doesn’t automatically mean being understood. Sometimes slowing down, waiting and letting silence be makes it easier to be heard.</span></p>
+      </div>
+    </div>
+
+    <div class="core-q reveal">
+      <span class="mono"><span lang="zh">核心研究问题</span><span lang="en">Core research question</span></span>
+      <p>
+        <span lang="zh">有意义的代际连接，需要的是<br><s>“更多交流”</s>，还是<mark>“更匹配的交流方式”<svg viewBox="0 0 300 12" preserveAspectRatio="none"><path d="M2 8 Q 40 0 75 7 T 150 7 T 225 7 T 298 5"/></svg></mark>？</span>
+        <span lang="en">Does meaningful connection across generations need <s>more communication</s> — or <mark>better-matched communication<svg viewBox="0 0 300 12" preserveAspectRatio="none"><path d="M2 8 Q 40 0 75 7 T 150 7 T 225 7 T 298 5"/></svg></mark>?</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MANIFESTO ================= -->
+<section class="dark manifesto" id="manifesto">
+  <div class="wrap mani-grid">
+    <div class="mani-lines" id="maniLines">
+      <p><span lang="zh">距离，可以是一种<em>尊重</em>。</span><span lang="en">Distance can be <em>respectful.</em></span></p>
+      <p><span lang="zh">沉默，也可以是<em>交流</em>。</span><span lang="en">Silence can be <em>communication.</em></span></p>
+      <p><span lang="zh">耐心，本身就是一种<em>理解</em>。</span><span lang="en">Patience can be a form of <em>understanding.</em></span></p>
+      <div class="mani-src mono"><span lang="zh">— 同频项目的三个信念</span><span lang="en">— Three beliefs behind Same Frequency</span></div>
+    </div>
+    <div>
+      <div class="lissa">
+        <div class="lissa-ring"></div><div class="lissa-ring r2"></div>
+        <canvas id="lissa" aria-label="Lissajous figure of two frequencies in 3:2 ratio"></canvas>
+      </div>
+      <div class="hz"><b>● 330 Hz</b> &nbsp;+&nbsp; <i>● 220 Hz</i> &nbsp;=&nbsp; 3 : 2</div>
+      <div class="listen">
+        <button class="listen-btn" id="listenBtn" aria-pressed="false">
+          <span class="ic" id="listenIc"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z" fill="currentColor"/></svg></span>
+          <span><span lang="zh">聆听两个频率</span><span lang="en">Hear two frequencies</span></span>
+        </button>
+        <p class="listen-cap"><span lang="zh">两个不同的频率，不必变成同一个，也能组成稳定、和谐的图形。</span><span lang="en">Two different frequencies don’t have to become one to form a steady, harmonious shape.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPECTRUM ================= -->
+<section class="sec spectrum" id="spectrum">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num reveal"><b>02</b><span lang="zh">沟通频谱</span><span lang="en">The spectrum</span></div>
+      <div>
+        <h2 class="reveal d1"><span lang="zh">“合不来”，<br>往往只是<em>频率没对上</em>。</span><span lang="en">Not getting along is often just <em>a mismatch</em> in frequency.</span></h2>
+        <p class="lead reveal d2" style="margin-top:24px"><span lang="zh">项目把访谈中反复出现的主题整理成 7 个可测量的维度，绘制一张「沟通偏好地图」（Communication Preference Map），看见人与人之间真正的差异在哪里。</span><span lang="en">Recurring interview themes are coded into seven measurable dimensions and drawn as a Communication Preference Map, showing where people actually differ.</span></p>
+      </div>
+    </div>
+
+    <div class="map reveal">
+      <div class="map-top">
+        <div class="presets" id="presets"></div>
+        <div class="legend">
+          <span><i class="dot y"></i><span lang="zh">青年</span><span lang="en">Youth</span></span>
+          <span><i class="dot e"></i><span lang="zh">长辈</span><span lang="en">Elder</span></span>
+        </div>
+      </div>
+      <div class="map-story" id="mapStory"></div>
+      <div class="rows" id="rows"></div>
+      <div class="scale"><div></div><div><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div><div></div></div>
+      <p class="note"><span class="mono" style="color:var(--youth)">*</span><span><span lang="zh">示意图：以上为说明用的假设配对，并非研究数据。真实地图将由访谈与问卷结果生成。</span><span lang="en">Illustrative only: these are hypothetical pairs, not research data. The real map will be drawn from interview and survey results.</span></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section class="sec" id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num reveal"><b>03</b><span lang="zh">研究方法</span><span lang="en">Method</span></div>
+      <div>
+        <h2 class="reveal d1"><span lang="zh">从<em>真实的故事</em>出发，<br>而不是预设的答案。</span><span lang="en">Starting from <em>real stories,</em> not presumed answers.</span></h2>
+        <p class="lead reveal d2" style="margin-top:24px"><span lang="zh">访谈、问卷、数据分析、设计、测试、公开表达：六个阶段，把一个人的观察变成可验证、可设计、可实践的探索。</span><span lang="en">Interviews, a survey, analysis, design, testing, then sharing the work. Six phases turn a personal observation into something that can be tested, designed and put into practice.</span></p>
+      </div>
+    </div>
+    <div class="phases" id="phases"></div>
+  </div>
+</section>
+
+<!-- ================= MODES ================= -->
+<section class="sec modes" id="modes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num reveal"><b>04</b><span lang="zh">四种交流实验</span><span lang="en">Four formats</span></div>
+      <div>
+        <h2 class="reveal d1"><span lang="zh">不强迫所有人<br>都用<em>“聊天”</em>来连接。</span><span lang="en">Nobody has to connect <em>by talking.</em></span></h2>
+        <p class="lead reveal d2" style="margin-top:24px"><span lang="zh">根据数据设计四种低压力的交流方式，让双方自己选择。每次体验后，都用一份简短反馈记录：舒不舒服、节奏是否被尊重、是否感到被理解。</span><span lang="en">Four low-pressure formats designed from the data, and each pair picks their own. After every session a short check-in asks how comfortable it felt, whether each person’s pace was respected, and whether they felt understood.</span></p>
+      </div>
+    </div>
+    <div class="mode-grid">
+      <article class="mode reveal">
+        <div class="mode-img"><img src="assets/cards.jpg" alt="桌上摆放着一组空白问题卡与两杯茶" loading="lazy"><span class="idx">01 / 04</span></div>
+        <div class="mode-body">
+          <h3>Conversation Cards<small>对话卡片</small></h3>
+          <p><span lang="zh">双方从具体问题卡中自行选题，任何一张都可以跳过。</span><span lang="en">Each person picks from a deck of specific question cards and can skip any card.</span></p>
+          <dl class="mode-meta">
+            <div><dt><span lang="zh">观察</span><span lang="en">We observe</span></dt><dd><span lang="zh">结构化交流是否降低压力</span><span lang="en">Whether structure lowers the pressure</span></dd></div>
+            <div class="ask"><dt><span lang="zh">体验后问</span><span lang="en">We ask after</span></dt><dd><span lang="zh">“我是否更容易知道说什么？”</span><span lang="en">“Was it easier to know what to say?”</span></dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="mode reveal d1">
+        <div class="mode-img"><img src="assets/music.jpg" alt="木桌上的磁带播放器、手机、耳机与一杯热茶" loading="lazy"><span class="idx">02 / 04</span></div>
+        <div class="mode-body">
+          <h3>Music Exchange<small>音乐交换</small></h3>
+          <p><span lang="zh">双方各选一首歌或一段声音，可以解释，也可以只是一起听。</span><span lang="en">Each person brings a song or a sound. They can talk about it, or just listen together.</span></p>
+          <dl class="mode-meta">
+            <div><dt><span lang="zh">观察</span><span lang="en">We observe</span></dt><dd><span lang="zh">非语言媒介是否帮助表达</span><span lang="en">Whether non-verbal media help people express themselves</span></dd></div>
+            <div class="ask"><dt><span lang="zh">体验后问</span><span lang="en">We ask after</span></dt><dd><span lang="zh">“音乐是否让我更愿意停留、分享？”</span><span lang="en">“Did music make me want to stay and share?”</span></dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="mode reveal">
+        <div class="mode-img"><img src="assets/object.jpg" alt="一双年长的手与一双年轻的手一起拿着一张老照片" loading="lazy"><span class="idx">03 / 04</span></div>
+        <div class="mode-body">
+          <h3>Object &amp; Photo Prompt<small>物件 / 照片</small></h3>
+          <p><span lang="zh">带一件物品或一张照片，作为交流的锚点。</span><span lang="en">Bring an object or a photograph to anchor the conversation.</span></p>
+          <dl class="mode-meta">
+            <div><dt><span lang="zh">观察</span><span lang="en">We observe</span></dt><dd><span lang="zh">具体物件是否比抽象聊天更容易</span><span lang="en">Whether something concrete is easier than abstract talk</span></dd></div>
+            <div class="ask"><dt><span lang="zh">体验后问</span><span lang="en">We ask after</span></dt><dd><span lang="zh">“我是否更容易想起、表达？”</span><span lang="en">“Was it easier to remember and to express?”</span></dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="mode reveal d1">
+        <div class="mode-img"><img src="assets/quiet.jpg" alt="一位长辈与一位年轻人在秋天的公园小路上并肩散步" loading="lazy"><span class="idx">04 / 04</span></div>
+        <div class="mode-body">
+          <h3>Quiet Co-activity<small>安静共处</small></h3>
+          <p><span lang="zh">散步、画画、整理、听音乐，不要求持续聊天。</span><span lang="en">Walking, drawing, tidying up or listening to music together. Nobody has to keep the conversation going.</span></p>
+          <dl class="mode-meta">
+            <div><dt><span lang="zh">观察</span><span lang="en">We observe</span></dt><dd><span lang="zh">沉默和共同活动是否也能形成连接</span><span lang="en">Whether silence and shared activity can also connect people</span></dd></div>
+            <div class="ask"><dt><span lang="zh">体验后问</span><span lang="en">We ask after</span></dt><dd><span lang="zh">“不说话时，我是否仍感到舒服、被尊重？”</span><span lang="en">“When we weren’t talking, did I still feel comfortable and respected?”</span></dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUESTIONS ================= -->
+<section class="qs" id="questions">
+  <div class="wrap qs-head">
+    <div>
+      <div class="sec-num reveal" style="margin-bottom:22px"><b>05</b><span lang="zh">我们会问的问题</span><span lang="en">Questions we ask</span></div>
+      <h2 class="reveal d1"><span lang="zh">好的问题，<br><em>本身就是一种倾听</em>。</span><span lang="en">A good question is <em>already a way of listening.</em></span></h2>
+    </div>
+    <div class="legend reveal d2">
+      <span><i class="dot y"></i><span lang="zh">问青年</span><span lang="en">Asked to youth</span></span>
+      <span><i class="dot e"></i><span lang="zh">问长辈</span><span lang="en">Asked to elders</span></span>
+    </div>
+  </div>
+  <div class="marquee" id="mq1"></div>
+  <div class="marquee rev" id="mq2"></div>
+</section>
+
+<!-- ================= OUTPUTS ================= -->
+<section class="sec" id="outputs" style="padding-top:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num reveal"><b>06</b><span lang="zh">最终成果</span><span lang="en">What it becomes</span></div>
+      <div>
+        <h2 class="reveal d1"><span lang="zh">不只是一份报告，<br>而是<em>研究 × 设计 × 声音</em>。</span><span lang="en">More than a report: <em>research, design and sound.</em></span></h2>
+      </div>
+    </div>
+    <div class="outputs-grid">
+      <div class="out radio c4 reveal">
+        <span class="mono"><span lang="zh">人文层 · 音频作品</span><span lang="en">Humanities · Audio series</span></span>
+        <h3><span lang="zh">《同频》短音频系列</span><span lang="en">Same Frequency, the radio series</span></h3>
+        <p><span lang="zh">3–5 集短音频 / Radio 作品。结合音乐、停顿、环境声音与自愿分享的故事——只使用明确同意公开的内容。</span><span lang="en">Three to five short audio episodes made from music, pauses, ambient sound and stories people chose to share. Only content with explicit consent to publish is used.</span></p>
+        <div class="eps"><span>EP01 · <span lang="zh">沉默</span><span lang="en">Silence</span></span><span>EP02 · <span lang="zh">等待</span><span lang="en">Waiting</span></span><span>EP03 · <span lang="zh">距离</span><span lang="en">Distance</span></span><span>EP04 · <span lang="zh">一首歌</span><span lang="en">One song</span></span></div>
+        <div class="player">
+          <span class="pbtn"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z" fill="currentColor"/></svg></span>
+          <div class="bars" id="bars"></div>
+          <span class="t"><span lang="zh">即将上线</span><span lang="en">Coming soon</span></span>
+        </div>
+      </div>
+      <div class="out c2 reveal d1">
+        <span class="mono"><span lang="zh">研究层</span><span lang="en">Research</span></span>
+        <div class="bignum">8–12</div>
+        <h3><span lang="zh">页学生研究报告</span><span lang="en">page research report</span></h3>
+        <p><span lang="zh">问题、方法、结果、局限与反思。数字与匿名化的真实表达并排呈现。</span><span lang="en">Question, method, results, limitations and reflection. Charts sit next to anonymised quotes, so the numbers and the voices appear together.</span></p>
+      </div>
+      <div class="out menu c2 reveal">
+        <span class="mono"><span lang="zh">设计层</span><span lang="en">Design</span></span>
+        <h3>Communication Menu</h3>
+        <p><span lang="zh">不是“教年轻人怎么和老人说话”，而是一份双方都可以点选的交流菜单。</span><span lang="en">Not a guide that teaches young people how to talk to elders, but a menu both people choose from.</span></p>
+        <div class="menu-list">
+          <div><span lang="zh">对话卡片</span><span lang="en">Conversation cards</span><span>01</span></div>
+          <div><span lang="zh">音乐交换</span><span lang="en">Music exchange</span><span>02</span></div>
+          <div><span lang="zh">物件 / 照片</span><span lang="en">Object / photo</span><span>03</span></div>
+          <div><span lang="zh">安静共处</span><span lang="en">Quiet co-activity</span><span>04</span></div>
+        </div>
+      </div>
+      <div class="out map-out c2 reveal d1">
+        <span class="mono"><span lang="zh">视觉层</span><span lang="en">Visual</span></span>
+        <h3>Preference Map</h3>
+        <p><span lang="zh">一张图，展示人们在沉默、节奏、结构、距离与媒介上的差异。</span><span lang="en">One map of how people differ on silence, pacing, structure, distance and medium.</span></p>
+        <div class="mini-map">
+          <div>silence<u style="--a:15%;--b:80%"></u></div>
+          <div>pacing<u style="--a:25%;--b:72%"></u></div>
+          <div>structure<u style="--a:40%;--b:62%"></u></div>
+          <div>distance<u style="--a:70%;--b:55%"></u></div>
+          <div>medium<u style="--a:30%;--b:85%"></u></div>
+        </div>
+      </div>
+      <div class="out c2 reveal d2">
+        <span class="mono"><span lang="zh">反思层</span><span lang="en">Reflection</span></span>
+        <h3><span lang="zh">个人反思</span><span lang="en">A personal reflection</span></h3>
+        <p><span lang="zh">哪些原先的假设被数据改变了，哪些没有。诚实地写下自己的变化与坚持。</span><span lang="en">Which starting assumptions the data changed, and which held up. An honest account of what shifted and what stayed.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ETHICS ================= -->
+<section class="sec ethics" id="ethics">
+  <div class="wrap eth-grid">
+    <div class="eth-sticky">
+      <div class="sec-num reveal" style="margin-bottom:22px"><b>07</b><span lang="zh">伦理边界</span><span lang="en">Ethics</span></div>
+      <h2 class="reveal d1"><span lang="zh">尊重，<br>先于<em>一切数据</em>。</span><span lang="en">Respect comes <em>before any data.</em></span></h2>
+      <p class="lead reveal d2" style="margin-top:24px"><span lang="zh">这是一个关于理解的项目，所以它首先必须是一个尊重人的项目。</span><span lang="en">A project about understanding people has to start by respecting them.</span></p>
+      <div class="eth-photo reveal d3"><img src="assets/object.jpg" alt="" loading="lazy"></div>
+    </div>
+    <div class="eth-list">
+      <div class="eth-item reveal"><div><h3><span lang="zh">不贴标签</span><span lang="en">No labels</span></h3><p><span lang="zh">不把安静、慢回应、重复表达等行为自动解释为神经多样性；只有本人或家庭主动提供时才记录相关背景。</span><span lang="en">Quietness, slow replies or repetition are never read as signs of neurodivergence. Such background is recorded only when a participant or their family offers it.</span></p></div></div>
+      <div class="eth-item reveal"><div><h3><span lang="zh">不追问诊断</span><span lang="en">No diagnosis-seeking</span></h3><p><span lang="zh">医疗或认知信息不是项目需要的数据，我们不会为此主动询问。</span><span lang="en">Medical or cognitive information isn’t data this project needs, and we won’t ask for it.</span></p></div></div>
+      <div class="eth-item reveal"><div><h3><span lang="zh">随时跳过，随时退出</span><span lang="en">Skip or leave at any time</span></h3><p><span lang="zh">任何参与者都可以跳过任何问题，或在任何时候退出。</span><span lang="en">Anyone can skip any question or stop taking part at any point.</span></p></div></div>
+      <div class="eth-item reveal"><div><h3><span lang="zh">匿名与同意</span><span lang="en">Anonymity and consent</span></h3><p><span lang="zh">记录只使用匿名编号（如 Y01、O01）；未经同意，不录音，不公开声音、照片、故事或原话。</span><span lang="en">Records use anonymous IDs such as Y01 and O01. Nothing is recorded, and no voice, photo, story or quote is published, without consent.</span></p></div></div>
+      <div class="eth-item reveal"><div><h3><span lang="zh">适当的同意流程</span><span lang="en">Proper consent pathways</span></h3><p><span lang="zh">面对可能存在认知能力受损的长辈，不由学生自行判断其能否同意，而是通过家属、机构或指导老师的适当流程。</span><span lang="en">For older adults who may have cognitive impairment, the student never decides alone whether they can consent. Family members, care organisations or a supervising teacher handle that decision.</span></p></div></div>
+      <div class="eth-item reveal"><div><h3><span lang="zh">不做治疗声明</span><span lang="en">No treatment claims</span></h3><p><span lang="zh">本项目不是医学诊断或治疗研究，不声称改善、治疗或干预自闭症、失智症等状况。</span><span lang="en">This is not medical or clinical research. It makes no claim to improve, treat or intervene in autism, dementia or any other condition.</span></p></div></div>
+      <div class="eth-item reveal"><div><h3><span lang="zh">先确认，再升级</span><span lang="en">Review before scaling up</span></h3><p><span lang="zh">若未来升级为正式发表、竞赛或导师指导的人体研究，将先由学校 / 导师确认伦理与知情同意要求。</span><span lang="en">If the work grows into formal publication, a competition or supervised human-subjects research, a school or mentor will review the ethics and consent requirements first.</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="sec" id="timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num reveal"><b>08</b><span lang="zh">十周计划</span><span lang="en">10-week plan</span></div>
+      <h2 class="reveal d1"><span lang="zh">十周，<br>从<em>六次访谈</em>开始。</span><span lang="en">Ten weeks, starting with <em>six conversations.</em></span></h2>
+    </div>
+    <div class="tl reveal" id="tl"><div class="tl-track" id="tlTrack"></div></div>
+    <div class="tl-hint mono"><span lang="zh">← 左右拖动查看 →</span><span lang="en">← Drag to explore →</span><span><span class="dot y"></span> <span lang="zh">研究</span><span lang="en">Research</span> &nbsp; <span class="dot e"></span> <span lang="zh">设计与输出</span><span lang="en">Design &amp; output</span></span></div>
+  </div>
+</section>
+
+<!-- ================= SUCCESS ================= -->
+<section class="sec success dark" id="success">
+  <div class="wrap">
+    <div class="succ-grid">
+      <div>
+        <div class="sec-num reveal" style="margin-bottom:30px;color:rgba(239,231,216,.5)"><b>09</b><span lang="zh">怎样才算成功</span><span lang="en">What success means</span></div>
+        <p class="not reveal d1"><span lang="zh">不是“让老人更开心”，<br>或“让两代人更亲近”。</span><span lang="en">Not “making elders happier” or “bringing generations closer.”</span></p>
+        <p class="but reveal d2"><span lang="zh">而是证明：<br><em>“一种沟通方式适合所有人”</em><br>并不成立。</span><span lang="en">But showing why <em>“one way of communicating fits everyone”</em> doesn’t hold.</span></p>
+      </div>
+      <ul class="succ-list reveal d2">
+        <li><span>01</span><span><span lang="zh">识别至少 3–5 种真实存在的 communication mismatch。</span><span lang="en">Identify at least 3–5 real communication mismatches.</span></span></li>
+        <li><span>02</span><span><span lang="zh">用访谈与数据，解释为什么没有万能的沟通方式。</span><span lang="en">Use interviews and data to explain why no single way of communicating works for everyone.</span></span></li>
+        <li><span>03</span><span><span lang="zh">根据参与者反馈，迭代至少一种交流形式。</span><span lang="en">Revise at least one format based on participant feedback.</span></span></li>
+        <li><span>04</span><span><span lang="zh">最终输出既有数据，也有人真实的声音与选择。</span><span lang="en">End with both data and people’s own voices and choices.</span></span></li>
+        <li><span>05</span><span><span lang="zh">诚实说明：哪些看法改变了，哪些仍然保留。</span><span lang="en">Say honestly which views changed and which remain.</span></span></li>
+      </ul>
+    </div>
+
+    <div class="quote-block reveal">
+      <div class="avatar">C</div>
+      <div>
+        <blockquote>
+          <span lang="zh">她仍然相信边界有价值，但开始区分“距离”和“忽视”。同频不是让所有人进入同一个频率，而是学习——当两个人保持不同的节奏、观点和表达方式时，是否仍然能够认真听见彼此。</span>
+          <span lang="en">She still believes boundaries matter, but she has started to tell distance apart from neglect. Same Frequency isn’t about putting everyone on one wavelength. It asks whether two people who keep their own pace, views and ways of speaking can still truly hear each other.</span>
+        </blockquote>
+        <cite class="mono"><span lang="zh">Cynthia · 项目发起人</span><span lang="en">Cynthia · Project lead</span></cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOIN ================= -->
+<section class="sec" id="join">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num reveal"><b>10</b><span lang="zh">参与研究</span><span lang="en">Take part</span></div>
+      <div>
+        <h2 class="reveal d1"><span lang="zh">你的节奏，<br>也是这张地图的<em>一部分</em>。</span><span lang="en">Your rhythm belongs <em>on this map.</em></span></h2>
+        <p class="lead reveal d2" style="margin-top:24px"><span lang="zh">我们正在邀请不同年龄、不同沟通风格的人参与一次简短访谈——安静型、慢回应型、喜欢固定话题、偏好具体问题、对声音环境敏感……都非常欢迎。</span><span lang="en">We’re inviting people of all ages and communication styles to a short interview. Quiet people, slow responders, people who like familiar topics or specific questions, and people sensitive to noise are all very welcome.</span></p>
+      </div>
+    </div>
+    <div class="join-grid">
+      <div class="join-card y reveal">
+        <svg class="deco" viewBox="0 0 240 120" aria-hidden="true"><path d="M0 60c15-45 30-45 45 0s30 45 45 0 30-45 45 0 30 45 45 0 30-45 45 0" stroke="#C8553D" stroke-width="2" fill="none"/></svg>
+        <span class="mono" style="color:var(--youth)"><span lang="zh">青年组 · 5–10 人</span><span lang="en">Youth group · 5–10 people</span></span>
+        <h3><span lang="zh">如果你是年轻人</span><span lang="en">If you’re young</span></h3>
+        <ul>
+          <li><span lang="zh">高中生、大学生或年轻成年人</span><span lang="en">High school or university students, or young adults</span></li>
+          <li><span lang="zh">聊聊和长辈相处时，什么时候最聊得来，什么时候觉得“说了也没用”</span><span lang="en">Talk about when conversations with older relatives flow, and when it feels pointless to say anything</span></li>
+          <li><span lang="zh">之后可能有一份匿名问卷</span><span lang="en">There may be a short anonymous survey afterwards</span></li>
+        </ul>
+        <a class="btn btn-dark" href="mailto:hello@example.com?subject=Same%20Frequency%20-%20Youth"><span lang="zh">报名青年访谈</span><span lang="en">Sign up as youth</span> <span class="arr">→</span></a>
+      </div>
+      <div class="join-card e reveal d1">
+        <svg class="deco" viewBox="0 0 240 120" aria-hidden="true"><path d="M0 60c30-55 60-55 90 0s60 55 90 0 60-55 60-55" stroke="#3F6F66" stroke-width="2" fill="none"/></svg>
+        <span class="mono" style="color:var(--elder)"><span lang="zh">长辈组 · 5–10 人</span><span lang="en">Elder group · 5–10 people</span></span>
+        <h3><span lang="zh">如果您是长辈</span><span lang="en">If you’re an older adult</span></h3>
+        <ul>
+          <li><span lang="zh">家中长辈、朋友的父母或祖辈、社区与公益机构的长辈</span><span lang="en">Grandparents, friends’ parents and grandparents, or older adults in community and care organisations</span></li>
+          <li><span lang="zh">聊聊什么让您觉得舒服，什么让您觉得累</span><span lang="en">Tell us what feels comfortable in a conversation, and what feels tiring</span></li>
+          <li><span lang="zh">不想回答的问题，都可以跳过</span><span lang="en">You can skip any question you’d rather not answer</span></li>
+        </ul>
+        <a class="btn btn-dark" href="mailto:hello@example.com?subject=Same%20Frequency%20-%20Elder"><span lang="zh">推荐一位长辈</span><span lang="en">Refer an elder</span> <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="invite reveal">
+      <span class="mono"><span lang="zh">一段邀请</span><span lang="en">An invitation</span></span>
+      <p><span lang="zh">“这是一个关于年轻人与老年人沟通方式的学生项目。我们想了解不同的人对于聊天、沉默、回应速度、观点不同、音乐和共同活动等交流方式的感受。这不是医学诊断或治疗研究，也不会判断任何人的心理或神经状况；不想回答的问题可以跳过。”</span><span lang="en">“This is a student project about how young and older people communicate. We want to learn how different people feel about conversation, silence, the speed of replies, disagreement, music and shared activities. It is not medical or diagnostic research, and it makes no judgement about anyone’s mental or neurological state. You can skip any question.”</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-big"><span class="z">同频</span><span class="e">Same Frequency</span></div>
+    <div class="foot-wave"><canvas id="footWave"></canvas></div>
+    <div class="foot-row">
+      <span><span lang="zh">一个由 Cynthia 发起的学生研究项目 · 2026</span><span lang="en">A student research project by Cynthia · 2026</span></span>
+      <div class="foot-links">
+        <a href="#premise"><span lang="zh">起点</span><span lang="en">Premise</span></a>
+        <a href="#method"><span lang="zh">方法</span><span lang="en">Method</span></a>
+        <a href="#ethics"><span lang="zh">伦理</span><span lang="en">Ethics</span></a>
+        <a href="#join"><span lang="zh">参与</span><span lang="en">Take part</span></a>
+      </div>
+      <span><span lang="zh">非医学诊断或治疗研究</span><span lang="en">Not medical or clinical research</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const L = (zh, en) => `<span lang="zh">${zh}</span><span lang="en">${en}</span>`;
+
+/* ---------- language ---------- */
+const root = document.documentElement;
+const titles = { zh: '同频 Same Frequency · 代际沟通研究项目', en: 'Same Frequency 同频 · Intergenerational Communication' };
+function setLang(l) {
+  root.dataset.lang = l;
+  root.lang = l === 'zh' ? 'zh-CN' : 'en';
+  document.title = titles[l];
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.set === l));
+  const on = $('.lang button.on'), pill = $('.lang .pill');
+  if (on) { pill.style.width = on.offsetWidth + 'px'; pill.style.transform = `translateX(${on.offsetLeft - 3}px)`; }
+  try { localStorage.setItem('sf-lang', l); } catch (e) {}
+}
+let initial = 'zh';
+try { initial = localStorage.getItem('sf-lang') || ((navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en'); } catch (e) {}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.set)));
+
+/* ---------- nav ---------- */
+const nav = $('#nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), { passive: true });
+
+/* ---------- preference map ---------- */
+const dims = [
+  ['沉默舒适度', 'Comfort with silence', 'Comfort with silence'],
+  ['等待耐心', 'Response patience', 'Response patience'],
+  ['分歧容忍度', 'Disagreement tolerance', 'Disagreement tolerance'],
+  ['偏好结构化交流', 'Prefers structure', 'Conversation structure'],
+  ['偏好保持距离', 'Prefers distance', 'Preferred distance'],
+  ['偏好非语言媒介', 'Non-verbal medium', 'Preferred medium'],
+  ['被理解感', 'Feels understood', 'Perceived understanding'],
+];
+const presets = [
+  { name: L('一个填满沉默', 'Filling the silence'),
+    story: L('一个急着接话，一个需要时间——问题不在“聊得不够多”。', 'One rushes to fill the pause, one needs time. The problem isn’t too little talking.'),
+    y: [1.6, 1.9, 3.6, 2.0, 3.8, 2.4, 2.4], e: [4.5, 4.6, 3.1, 4.1, 3.4, 4.2, 2.2] },
+  { name: L('都需要距离', 'Both value distance'),
+    story: L('两个人都不需要频繁联系——看似疏远，其实频率相近。', 'Neither needs constant contact. They look distant, but they’re on a similar wavelength.'),
+    y: [4.1, 3.4, 3.0, 2.8, 4.6, 3.2, 3.9], e: [4.3, 3.9, 2.6, 3.3, 4.3, 3.6, 4.0] },
+  { name: L('观点不同', 'Disagreeing'),
+    story: L('观点相左，却仍觉得被理解——分歧不等于不被理解。', 'They disagree and still feel understood. Disagreement isn’t the same as being misunderstood.'),
+    y: [2.9, 3.1, 4.6, 1.8, 3.0, 2.3, 3.9], e: [3.3, 3.8, 4.1, 3.4, 2.6, 4.5, 4.1] },
+];
+const rowsEl = $('#rows'), presetsEl = $('#presets'), storyEl = $('#mapStory');
+rowsEl.innerHTML = dims.map(d => `
+  <div class="row">
+    <div class="row-l"><b>${L(d[0], d[1])}</b><span class="mono" lang="zh">${d[2]}</span></div>
+    <div class="track"><div class="ticks"><i></i><i></i><i></i><i></i><i></i></div><div class="gap"></div><div class="knob y"></div><div class="knob e"></div></div>
+    <div class="row-r"></div>
+  </div>`).join('');
+presetsEl.innerHTML = presets.map((p, i) => `<button data-i="${i}">${p.name}</button>`).join('');
+const pct = v => ((v - 1) / 4) * 100;
+function showPreset(i) {
+  const p = presets[i];
+  presetsEl.querySelectorAll('button').forEach((b, j) => b.classList.toggle('on', j === i));
+  storyEl.style.opacity = 0;
+  setTimeout(() => { storyEl.innerHTML = p.story; storyEl.style.opacity = 1; }, 250);
+  rowsEl.querySelectorAll('.row').forEach((row, k) => {
+    const a = pct(p.y[k]), b = pct(p.e[k]), gap = Math.abs(p.y[k] - p.e[k]);
+    row.querySelector('.knob.y').style.left = a + '%';
+    row.querySelector('.knob.e').style.left = b + '%';
+    const g = row.querySelector('.gap');
+    g.style.left = Math.min(a, b) + '%'; g.style.width = Math.abs(a - b) + '%';
+    const mis = gap >= 1.2;
+    row.classList.toggle('mis', mis);
+    row.querySelector('.row-r').innerHTML = mis ? L('错频', 'Mismatch') + ` Δ${gap.toFixed(1)}` : `Δ${gap.toFixed(1)}`;
+  });
+}
+presetsEl.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { showPreset(+b.dataset.i); clearInterval(cycle); } });
+let cur = 0;
+showPreset(0);
+const cycle = setInterval(() => { if (document.hidden) return; const r = $('#spectrum').getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) { cur = (cur + 1) % presets.length; showPreset(cur); } }, 6000);
+
+/* ---------- method phases ---------- */
+const phases = [
+  ['观察', 'Observe', '访谈青年与老人', 'Interview young people and elders', '访谈记录、初步主题', 'Interview notes, early themes', '找到真实沟通矛盾，而非预设答案', 'Find real tensions, not presumed answers'],
+  ['测量', 'Measure', '把访谈主题转成问卷', 'Turn interview themes into a survey', '30–60 份问卷', '30–60 survey responses', '量化沉默、等待、边界、结构等偏好', 'Quantify preferences for silence, waiting, boundaries and structure'],
+  ['分析', 'Analyse', '描述统计、组间比较、相关分析、主题编码', 'Descriptive stats, group comparison, correlation, thematic coding', '图表＋发现摘要', 'Charts and a summary of findings', '识别 communication mismatch', 'Identify communication mismatches'],
+  ['设计', 'Design', '设计多种低压力沟通方式', 'Design several low-pressure formats', '对话 / 音乐 / 物件 / 安静活动方案', 'Card, music, object and quiet-activity formats', '不强迫所有人用“聊天”连接', 'Nobody has to connect by talking'],
+  ['测试', 'Test', '小规模配对体验与反馈', 'Small paired sessions with feedback', '体验前后反馈、观察记录', 'Before-and-after feedback, observation notes', '判断哪些方式对哪些人更舒服', 'Learn which formats feel right for whom'],
+  ['输出', 'Share', '同频音频、工具包与研究反思', 'Audio series, toolkit and reflection', '公开成果', 'Public outputs', '把研究转化为人文表达与社会行动', 'Turn research into stories and action'],
+];
+const wavePath = n => { let d = 'M0 11', w = 84 / n; for (let i = 0; i < n; i++) d += ` q${w / 4} ${i % 2 ? 9 : -9} ${w / 2} 0 t${w / 2} 0`; return d; };
+$('#phases').innerHTML = phases.map((p, i) => `
+  <div class="phase reveal ${i % 3 ? 'd' + (i % 3) : ''}">
+    <div class="ph-n"><span>PHASE 0${i + 1}</span><svg viewBox="0 0 84 22"><path d="${wavePath(i + 1)}" fill="none" stroke="${i < 3 ? '#C8553D' : '#3F6F66'}" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    <h3>${L(p[0], p[1])}</h3>
+    <div class="sub">${L(p[1], p[0])}</div>
+    <p>${L(p[2], p[3])}</p>
+    <dl><div><dt>${L('产出', 'Output')}</dt><dd>${L(p[4], p[5])}</dd></div><div><dt>${L('目标', 'Goal')}</dt><dd>${L(p[6], p[7])}</dd></div></dl>
+  </div>`).join('');
+
+/* ---------- questions marquee ---------- */
+const qy = [
+  ['你和家里长辈什么时候最容易聊得来？什么时候最容易觉得“说了也没用”？', 'When is it easiest to talk with older relatives? When does it feel pointless to say anything?'],
+  ['和长辈待在一起不说话，你会觉得舒服、尴尬还是疏远？', 'Sitting with an older relative without talking: does it feel comfortable, awkward or distant?'],
+  ['如果对方需要很长时间才能回应，你会不会下意识继续说、换话题或帮他回答？', 'If someone takes a long time to reply, do you keep talking, change the subject or answer for them?'],
+  ['你觉得“经常联系”“关系亲近”“被理解”是同一件事吗？', 'Are staying in touch, being close and being understood the same thing?'],
+  ['当长辈批评你的观点或生活选择时，你会解释、争论、沉默，还是结束话题？', 'When an elder criticises your views or choices, do you explain, argue, go quiet or end the conversation?'],
+  ['有没有哪一次，换了一种方式之后，交流反而变容易了？', 'Was there a time when changing how you connected made it easier?'],
+  ['自由聊天、具体问题、一起听音乐、看旧照片、散步，还是安静待在一起？', 'Free chat, specific questions, music, old photos, a walk, or just being quietly together?'],
+];
+const qe = [
+  ['和年轻人交流时，什么会让您觉得舒服？什么会让您觉得累？', 'When talking with young people, what feels comfortable, and what feels tiring?'],
+  ['如果两个人待在一起但不一直说话，您会觉得这是陪伴还是疏远？', 'If two people are together but not always talking, does that feel like company or distance?'],
+  ['您希望别人给您更多时间慢慢回答，还是希望对方帮助推进话题？', 'Would you like more time to answer, or for the other person to keep things moving?'],
+  ['年轻人和您观点不同时，什么样的回应会让您觉得被尊重？', 'When a young person disagrees with you, what kind of reply feels respectful?'],
+  ['音乐、照片、旧物、散步或一起做事，会不会比直接聊天更容易表达？', 'Would music, photos, old objects, a walk or doing something together be easier than just talking?'],
+  ['什么行为会让您觉得年轻人是真的在听，而不只是出于礼貌？', 'What tells you a young person is really listening, and not just being polite?'],
+  ['您更喜欢对方自由聊天，还是问比较具体的问题？', 'Do you prefer open conversation, or more specific questions?'],
+];
+const qcard = (q, t) => `<div class="qcard ${t}"><span class="who"><i class="dot ${t}"></i>${t === 'y' ? L('问青年', 'To youth') : L('问长辈', 'To elders')}</span><p>${L(q[0], q[1])}</p></div>`;
+const fill = (el, arr, t) => { const html = arr.map(q => qcard(q, t)).join(''); el.innerHTML = `<div class="mq-track">${html}</div><div class="mq-track" aria-hidden="true">${html}</div>`; };
+fill($('#mq1'), qy, 'y'); fill($('#mq2'), qe, 'e');
+
+/* ---------- timeline ---------- */
+const weeks = [
+  ['确定研究问题、访谈稿与隐私规则', 'Define the question, interview guide and privacy rules', '1 页研究方案＋招募话术', 'One-page protocol and recruitment script'],
+  ['先访谈 3 名青年＋3 名长辈', 'Pilot: interview 3 youth and 3 elders', '6 份匿名访谈记录', '6 anonymised interview notes'],
+  ['扩展至 10–20 人并开始编码', 'Expand to 10–20 people and begin coding', '初版主题表', 'First theme table'],
+  ['确定 6–8 个核心变量', 'Settle on 6–8 core variables', 'Codebook＋问卷 V1', 'Codebook and survey v1'],
+  ['3–5 人试填问卷并修改', 'Pilot the survey with 3–5 people', '正式问卷', 'Final survey'],
+  ['扩大问卷收集', 'Scale up survey collection', '目标 30–60 份', 'Target: 30–60 responses'],
+  ['分析数据', 'Analyse the data', '图表＋主题发现', 'Charts and thematic findings'],
+  ['选择 2–4 种交流模式做原型', 'Prototype 2–4 communication formats', '活动卡 / 音乐 / 物件 / 安静活动', 'Cards, music, objects, quiet activities'],
+  ['小规模体验并收集反馈', 'Run small sessions and gather feedback', 'Mini feedback＋观察日志', 'Mini feedback and observation log'],
+  ['整合研究与创作', 'Bring research and creative work together', '报告＋工具包＋音频样片', 'Report, toolkit and audio pilot'],
+];
+$('#tlTrack').innerHTML = weeks.map((w, i) => `
+  <div class="wk ${i < 7 ? 'ph-o' : 'ph-d'}"><div class="node"></div><span class="mono">${L('第 ' + (i + 1) + ' 周', 'Week ' + String(i + 1).padStart(2, '0'))}</span><h4>${L(w[0], w[1])}</h4><p>${L(w[2], w[3])}</p></div>`).join('');
+// drag to scroll
+const tl = $('#tl'); let down = false, sx = 0, sl = 0;
+tl.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; sx = e.clientX; sl = tl.scrollLeft; tl.style.cursor = 'grabbing'; });
+addEventListener('pointerup', () => { down = false; tl.style.cursor = ''; });
+addEventListener('pointermove', e => { if (down) tl.scrollLeft = sl - (e.clientX - sx); });
+
+/* ---------- player bars ---------- */
+$('#bars').innerHTML = Array.from({ length: 56 }, (_, i) => { const h = 18 + Math.abs(Math.sin(i * .55) * Math.cos(i * .21)) * 82; return `<i class="${i < 14 ? 'p' : ''}" style="height:${h}%"></i>`; }).join('');
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* manifesto lines light up with scroll */
+const maniPs = [...document.querySelectorAll('#maniLines p')];
+function maniUpdate() {
+  maniPs.forEach(p => { const r = p.getBoundingClientRect(); p.classList.toggle('lit', r.top < innerHeight * .72); });
+}
+addEventListener('scroll', maniUpdate, { passive: true }); maniUpdate();
+
+/* ---------- canvases ---------- */
+function fitCanvas(c) {
+  const dpr = Math.min(devicePixelRatio || 1, 2), r = c.getBoundingClientRect();
+  c.width = r.width * dpr; c.height = r.height * dpr;
+  const ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, w: r.width, h: r.height };
+}
+const visible = new Map();
+const vio = new IntersectionObserver(es => es.forEach(e => visible.set(e.target, e.isIntersecting)));
+
+// hero waves
+const hc = $('#heroWave'); let H = fitCanvas(hc); vio.observe(hc);
+let mx = .5;
+addEventListener('pointermove', e => { mx = e.clientX / innerWidth; }, { passive: true });
+function drawHero(t) {
+  const { ctx, w, h } = H; ctx.clearRect(0, 0, w, h);
+  const mid = h * .45, amp = h * .26;
+  const waves = [
+    { c: 'rgba(200,85,61,.9)', k: 2 * Math.PI / 150, s: 1.6, a: amp * (.75 + mx * .35), lw: 1.8 },
+    { c: 'rgba(63,111,102,.9)', k: 2 * Math.PI / 420, s: .55, a: amp * (1.05 - mx * .25), lw: 1.8 },
+  ];
+  // sum (faint)
+  ctx.beginPath();
+  for (let x = 0; x <= w; x += 3) {
+    const y = mid + (Math.sin(x * waves[0].k - t * waves[0].s) * waves[0].a + Math.sin(x * waves[1].k - t * waves[1].s) * waves[1].a) * .5;
+    x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+  }
+  ctx.strokeStyle = 'rgba(29,27,23,.12)'; ctx.lineWidth = 1; ctx.setLineDash([2, 5]); ctx.stroke(); ctx.setLineDash([]);
+  waves.forEach(wv => {
+    ctx.beginPath();
+    for (let x = 0; x <= w; x += 2) {
+      const env = Math.min(1, x / 120, (w - x) / 120);
+      const y = mid + Math.sin(x * wv.k - t * wv.s) * wv.a * env;
+      x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.strokeStyle = wv.c; ctx.lineWidth = wv.lw; ctx.stroke();
+  });
+  // baseline
+  ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.strokeStyle = 'rgba(29,27,23,.08)'; ctx.lineWidth = 1; ctx.stroke();
+}
+
+// lissajous
+const lc = $('#lissa'); let LS = fitCanvas(lc); vio.observe(lc);
+let playing = false, glow = 0;
+function drawLissa(t) {
+  const { ctx, w, h } = LS; ctx.clearRect(0, 0, w, h);
+  const cx = w / 2, cy = h / 2, R = w * .36, d = t * .25;
+  glow += ((playing ? 1 : 0) - glow) * .05;
+  const g = ctx.createLinearGradient(0, 0, w, h);
+  g.addColorStop(0, '#E07A5F'); g.addColorStop(1, '#A8C5BC');
+  for (let pass = 0; pass < 2; pass++) {
+    ctx.beginPath();
+    for (let i = 0; i <= 720; i++) {
+      const s = i / 720 * Math.PI * 2;
+      const x = cx + Math.sin(3 * s + d) * R, y = cy + Math.sin(2 * s) * R;
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.strokeStyle = g; ctx.lineWidth = pass ? 1.6 : 8 + glow * 10;
+    ctx.globalAlpha = pass ? .95 : .06 + glow * .1; ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+  // tracing dots
+  const s = (t * .6) % (Math.PI * 2);
+  [[3, 2, '#E07A5F'], [3, 2, '#A8C5BC']].forEach(([a, b, c], i) => {
+    const ss = s + i * Math.PI;
+    ctx.beginPath(); ctx.arc(cx + Math.sin(a * ss + d) * R, cy + Math.sin(b * ss) * R, 4.5, 0, 7); ctx.fillStyle = c; ctx.fill();
+  });
+}
+
+// footer wave
+const fc = $('#footWave'); let F = fitCanvas(fc); vio.observe(fc);
+function drawFoot(t) {
+  const { ctx, w, h } = F; ctx.clearRect(0, 0, w, h);
+  const mid = h / 2;
+  [['rgba(224,122,95,.85)', 90, 1.2, .38], ['rgba(168,197,188,.75)', 260, .5, .42]].forEach(([c, L, s, a]) => {
+    ctx.beginPath();
+    for (let x = 0; x <= w; x += 2) { const y = mid + Math.sin(x / L * Math.PI * 2 - t * s) * h * a * Math.sin(Math.PI * x / w); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.strokeStyle = c; ctx.lineWidth = 1.5; ctx.stroke();
+  });
+}
+
+function loop(ms) {
+  const t = reduce ? 2 : ms / 1000;
+  if (visible.get(hc) !== false) drawHero(t);
+  if (visible.get(lc)) drawLissa(t);
+  if (visible.get(fc)) drawFoot(t);
+  if (!reduce) requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+if (reduce) { drawLissa(2); drawFoot(2); }
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { H = fitCanvas(hc); LS = fitCanvas(lc); F = fitCanvas(fc); setLang(root.dataset.lang); if (reduce) { drawHero(2); drawLissa(2); drawFoot(2); } }, 120); });
+
+/* ---------- listen: 330 Hz + 220 Hz ---------- */
+let actx, nodes;
+const icPlay = '<svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z" fill="currentColor"/></svg>';
+const icStop = '<svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" rx="1.5" fill="currentColor"/></svg>';
+$('#listenBtn').addEventListener('click', () => {
+  const btn = $('#listenBtn');
+  if (!playing) {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    actx.resume();
+    const master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
+    const oscs = [330, 220].map((f, i) => { const o = actx.createOscillator(), g = actx.createGain(); o.type = 'sine'; o.frequency.value = f; g.gain.value = i ? .55 : .4; o.connect(g).connect(master); o.start(); return o; });
+    master.gain.linearRampToValueAtTime(.12, actx.currentTime + 1.2);
+    nodes = { master, oscs };
+    playing = true; btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true'); $('#listenIc').innerHTML = icStop;
+  } else {
+    const { master, oscs } = nodes, now = actx.currentTime;
+    master.gain.cancelScheduledValues(now); master.gain.setValueAtTime(master.gain.value, now); master.gain.linearRampToValueAtTime(0, now + .8);
+    oscs.forEach(o => o.stop(now + .85));
+    playing = false; btn.classList.remove('on'); btn.setAttribute('aria-pressed', 'false'); $('#listenIc').innerHTML = icPlay;
+  }
+});
+
+/* ---------- init ---------- */
+setLang(initial);
+document.fonts && document.fonts.ready.then(() => setLang(root.dataset.lang));
+addEventListener('load', () => document.body.classList.add('loaded'));
+})();
+</script>
+</body>
+</html>
