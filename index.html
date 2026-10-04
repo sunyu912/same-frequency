@@ -292,6 +292,64 @@ h2 .o{color:var(--orange)}
 .promise>span::before{content:"✓";color:var(--orange);font-weight:700}
 
 
+
+/* ===== PODCAST ===== */
+.eps-link{display:inline-flex;gap:10px;align-items:center;margin-top:30px;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:700;font-size:15px;transition:transform .25s var(--ease)}
+.eps-link:hover{transform:translateY(-2px)}
+.eps-link i{font-style:normal;color:var(--orange);display:inline-block;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(3px)}}
+.pod{background:var(--ink);color:var(--paper);overflow:hidden}
+.pod-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:56px}
+.pod-stats{display:flex;gap:28px}
+.pod-stats div b{display:block;font-weight:900;font-stretch:125%;font-size:44px;line-height:1;color:var(--orange)}
+.pod-stats div span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;opacity:.6;text-transform:uppercase}
+.deck{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,4vw,64px);align-items:center;background:#16161D;border-radius:36px;padding:clamp(22px,3.4vw,52px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.turntable{position:relative;aspect-ratio:1;max-width:480px;width:100%;justify-self:center}
+.platter{position:absolute;inset:4%;border-radius:50%;background:#0A0A0E;box-shadow:0 30px 60px -20px rgba(0,0,0,.8),inset 0 0 0 2px rgba(255,255,255,.04)}
+.vinyl{position:absolute;inset:7%;border-radius:50%;background:repeating-radial-gradient(circle at center,#141418 0 2px,#0C0C10 2px 4px);animation:spin 7s linear infinite;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 40deg,rgba(255,255,255,.07) 55deg,transparent 70deg 210deg,rgba(255,255,255,.05) 230deg,transparent 250deg)}
+.vlabel{position:absolute;inset:31%;border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px #0C0C10}
+.vlabel svg{width:100%;height:100%;display:block}
+.vlabel::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px;border-radius:50%;background:#0C0C10}
+.arm{position:absolute;right:2%;top:4%;width:42%;height:62%;pointer-events:none;transform-origin:85% 10%;transition:transform .8s var(--ease);transform:rotate(-14deg)}
+.deck.swap .arm{transform:rotate(-24deg)}
+.np .mono{opacity:.6}
+.np-no{display:flex;align-items:baseline;gap:14px;margin:14px 0 4px}
+.np-no b{font-weight:900;font-stretch:125%;font-size:clamp(70px,8vw,120px);line-height:.85;color:var(--orange)}
+.np-no span{font-family:var(--mono);font-size:13px;opacity:.5}
+.np h3{font-weight:900;font-stretch:112%;font-size:clamp(28px,3.2vw,46px);line-height:1.02;letter-spacing:-.01em;margin-top:10px}
+.np .zh{font-family:var(--zh);font-weight:700;font-size:clamp(18px,1.6vw,22px);margin-top:8px;color:var(--sky)}
+.np-meta{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.np-meta span{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.07);font-size:13.5px}
+.np-meta span em{font-style:normal;font-family:var(--mono);font-size:10.5px;opacity:.55;text-transform:uppercase;letter-spacing:.06em}
+.np-qs{list-style:none;display:grid;gap:10px}
+.np-qs li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;font-size:16.5px;font-weight:500;line-height:1.4}
+.np-qs li::before{content:"Q";display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--orange);color:var(--ink);font-family:var(--mono);font-weight:600;font-size:13px}
+.np-qs li:nth-child(2)::before{background:var(--sky)} .np-qs li:nth-child(3)::before{background:var(--paper)}
+.np-fade{transition:opacity .3s,transform .3s}
+.np.out .np-fade{opacity:0;transform:translateY(8px)}
+.np-ctrl{display:flex;align-items:center;gap:12px;margin-top:28px;flex-wrap:wrap}
+.np-ctrl .rb{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:2px solid rgba(255,255,255,.2);font-size:18px;transition:border-color .2s,background .2s}
+.np-ctrl .rb:hover{border-color:var(--orange);background:rgba(255,90,44,.12)}
+.np-ctrl .soon{font-family:var(--mono);font-size:11px;letter-spacing:.06em;opacity:.55;margin-left:4px}
+.np-ctrl .pillbtn{margin-left:auto}
+.covers{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:22px}
+.cov{text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:10px}
+.cov .art{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.cov .art svg{position:absolute;inset:0;width:100%;height:100%}
+.cov .art .n{position:absolute;left:12px;top:10px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em}
+.cov .art .t{position:absolute;left:12px;right:12px;bottom:11px;font-weight:900;font-stretch:115%;font-size:clamp(13px,1.15vw,16px);line-height:1.05;letter-spacing:-.005em}
+.cov .art .pl{position:absolute;right:10px;top:8px;width:30px;height:30px;border-radius:50%;background:rgba(13,13,18,.85);color:var(--paper);display:grid;place-items:center;opacity:0;transform:scale(.7);transition:all .3s var(--ease)}
+.cov:hover .art{transform:translateY(-6px) rotate(-1deg)}
+.cov:hover .art .pl,.cov.on .art .pl{opacity:1;transform:none}
+.cov.on .art{box-shadow:0 0 0 3px var(--ink),0 0 0 6px var(--orange)}
+.cov .meta{font-size:14px;font-weight:700;line-height:1.3;font-family:var(--zh)}
+.cov .meta small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.06em;opacity:.5;text-transform:uppercase;margin-bottom:2px}
+.cov.on .meta{color:var(--orange)}
+@media (max-width:1100px){.covers{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:860px){.deck,.pod-head{grid-template-columns:1fr}.covers{grid-template-columns:repeat(3,1fr)}.turntable{max-width:340px}}
+@media (max-width:560px){.covers{grid-template-columns:repeat(2,1fr);gap:12px}.np-ctrl .pillbtn{margin-left:0;width:100%;justify-content:center}.pod-stats{gap:18px}.pod-stats div b{font-size:34px}.cov .art .t{font-size:14px}}
+
 /* ===== SIGN-UP MODAL ===== */
 .modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:rgba(20,26,128,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s}
 .modal.open{opacity:1;pointer-events:auto}
@@ -418,6 +476,7 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
       <a href="#channels"><span lang="zh">四个频道</span><span lang="en">Channels</span></a>
       <a href="#method"><span lang="zh">方法</span><span lang="en">Method</span></a>
       <a href="#outputs"><span lang="zh">成果</span><span lang="en">Outputs</span></a>
+      <a href="#podcast"><span lang="zh">播客</span><span lang="en">Podcast</span></a>
     </div>
     <div class="nav-r">
       <div class="lang"><button data-set="zh"><span>中</span></button><button data-set="en"><span>EN</span></button></div>
@@ -600,7 +659,7 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
           <path d="M42 28h396a12 12 0 0 1 12 12v32H30V40a12 12 0 0 1 12-12z" fill="#2A36E8"/>
           <text x="50" y="59" font-family="Noto Sans SC, sans-serif" font-weight="900" font-size="22" fill="#F3F1EC">同频</text>
           <text x="104" y="58" font-family="Archivo, sans-serif" font-weight="900" font-size="15" letter-spacing="2" fill="#F3F1EC">SAME FREQUENCY</text>
-          <text x="430" y="58" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#FF5A2C">SIDE A</text>
+          <text x="430" y="58" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#FF5A2C">EP01–10</text>
           <rect x="120" y="92" width="240" height="84" rx="42" fill="#0D0D12"/>
           <circle cx="170" cy="134" r="30" fill="#5A3A2E"/>
           <g class="reel" style="transform-origin:170px 134px"><circle cx="170" cy="134" r="14" fill="#F3F1EC"/><path d="M170 121v8M170 139v8M157 134h8M175 134h8" stroke="#0D0D12" stroke-width="4"/></g>
@@ -611,10 +670,10 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
           <circle cx="180" cy="270" r="9" fill="#0D0D12"/><circle cx="300" cy="270" r="9" fill="#0D0D12"/>
           <circle cx="30" cy="282" r="7" fill="#1C1C24"/><circle cx="450" cy="282" r="7" fill="#1C1C24"/>
         </svg>
-        <div class="eps"><span>EP01 · <span lang="zh">沉默</span><span lang="en">SILENCE</span></span><span>EP02 · <span lang="zh">等待</span><span lang="en">WAITING</span></span><span>EP03 · <span lang="zh">距离</span><span lang="en">DISTANCE</span></span><span>EP04 · <span lang="zh">一首歌</span><span lang="en">ONE SONG</span></span><span>EP05 · <span lang="zh">听见</span><span lang="en">HEARD</span></span></div>
+        <a class="eps-link" href="#podcast"><span lang="zh">▶ 收听 10 期播客</span><span lang="en">▶ See all 10 episodes</span> <i>↓</i></a>
       </div>
       <div class="tiles">
-        <div class="tile dark reveal"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></span><b><span lang="zh">3–5 集音频</span><span lang="en">3–5 audio episodes</span></b><span class="s"><span lang="zh">真实的声音、停顿与音乐</span><span lang="en">Real voices, pauses, music</span></span></div>
+        <div class="tile dark reveal"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></span><b><span lang="zh">10 期播客</span><span lang="en">10-episode podcast</span></b><span class="s"><span lang="zh">真实的声音、停顿与音乐</span><span lang="en">Real voices, pauses, music</span></span></div>
         <div class="tile reveal d1"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7M9 8h3"/></svg></span><b><span lang="zh">研究报告</span><span lang="en">Research report</span></b><span class="s"><span lang="zh">8–12 页，数据＋原声</span><span lang="en">8–12 pages, data + voices</span></span></div>
         <div class="tile reveal d2"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2"/></svg></span><b><span lang="zh">交流菜单</span><span lang="en">Communication Menu</span></b><span class="s"><span lang="zh">双方一起点选的交流方式</span><span lang="en">A menu both sides choose from</span></span></div>
         <div class="tile reveal d3"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/><circle cx="8" cy="7" r="2" fill="currentColor"/><circle cx="15" cy="12" r="2" fill="currentColor"/><circle cx="10" cy="17" r="2" fill="currentColor"/></svg></span><b><span lang="zh">偏好地图</span><span lang="en">Preference Map</span></b><span class="s"><span lang="zh">一张图看见差异</span><span lang="en">Differences, at a glance</span></span></div>
@@ -623,10 +682,53 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
   </div>
 </section>
 
+<!-- ===== PODCAST ===== -->
+<section class="sec pod" id="podcast">
+  <div class="wrap">
+    <div class="pod-head">
+      <div>
+        <div class="kicker reveal"><b>07</b><span lang="zh">同频播客</span><span lang="en">The podcast</span></div>
+        <h2 class="reveal d1"><span lang="zh">10 期节目，<br>10 种<span class="o">频率</span></span><span lang="en">10 episodes.<br>10 <span class="o">frequencies.</span></span></h2>
+      </div>
+      <div class="pod-stats reveal d2">
+        <div><b>10</b><span><span lang="zh">期话题</span><span lang="en">Topics</span></span></div>
+        <div><b>2–4</b><span><span lang="zh">位受访者 / 期</span><span lang="en">Voices / ep</span></span></div>
+        <div><b>100%</b><span><span lang="zh">真实故事</span><span lang="en">Real stories</span></span></div>
+      </div>
+    </div>
+
+    <div class="deck reveal" id="deck">
+      <div class="turntable" aria-hidden="true">
+        <div class="platter"></div>
+        <div class="vinyl"><div class="vlabel" id="vLabel"></div></div>
+        <svg class="arm" viewBox="0 0 200 300"><circle cx="170" cy="30" r="22" fill="#2A2A34"/><circle cx="170" cy="30" r="9" fill="#F3F1EC"/><path d="M170 30 L150 210 L118 262" fill="none" stroke="#C9C9D2" stroke-width="7" stroke-linecap="round"/><rect x="96" y="252" width="34" height="22" rx="4" transform="rotate(34 113 263)" fill="#FF5A2C"/></svg>
+      </div>
+      <div class="np" id="np">
+        <div class="mono"><span lang="zh">节目预告 · 即将上线</span><span lang="en">Episode preview · Coming soon</span></div>
+        <div class="np-fade">
+          <div class="np-no"><b id="npNo">01</b><span>/ 10</span></div>
+          <h3 id="npTitle"></h3>
+          <div class="zh" id="npZh"></div>
+          <div class="np-meta" id="npMeta"></div>
+          <ul class="np-qs" id="npQs"></ul>
+        </div>
+        <div class="np-ctrl">
+          <button class="rb" id="npPrev" aria-label="Previous episode">←</button>
+          <button class="rb" id="npNext" aria-label="Next episode">→</button>
+          <span class="soon"><span lang="zh">点击下方封面切换</span><span lang="en">Pick a cover below</span></span>
+          <a class="pillbtn pb-o" href="#signup" data-role="youth"><span lang="zh">想上节目？成为受访者</span><span lang="en">Be a guest</span> →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="covers" id="covers"></div>
+  </div>
+</section>
+
 <!-- ===== ETHICS ===== -->
 <section class="sec" id="ethics">
   <div class="wrap">
-    <div class="kicker reveal"><b>07</b><span lang="zh">伦理边界</span><span lang="en">Ethics</span></div>
+    <div class="kicker reveal"><b>08</b><span lang="zh">伦理边界</span><span lang="en">Ethics</span></div>
     <h2 class="reveal d1"><span lang="zh">尊重，<br>先于<span class="o">数据</span></span><span lang="en">Respect comes<br>before <span class="o">data.</span></span></h2>
     <div class="eth-grid" id="eth"></div>
   </div>
@@ -640,7 +742,7 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
       <p class="q"><span lang="zh">“当两个人保持不同的节奏，<br>是否仍然能够认真听见彼此？”</span><span lang="en">“Can two people keep different rhythms and still truly hear each other?”</span><span class="mono">— Cynthia · <span lang="zh">项目发起人</span><span lang="en">Project lead</span></span></p>
     </div>
     <div class="join-r">
-      <div class="kicker reveal"><b>08</b><span lang="zh">参与研究</span><span lang="en">Take part</span></div>
+      <div class="kicker reveal"><b>09</b><span lang="zh">参与研究</span><span lang="en">Take part</span></div>
       <h2 class="reveal d1"><span lang="zh">把你的<span class="o">频率</span><br>加进地图</span><span lang="en">Add your<br><span class="o">frequency.</span></span></h2>
       <div class="join-btns">
         <a class="jb y reveal d2" href="#signup" data-role="youth"><span class="av">Y</span><span><b><span lang="zh">我是年轻人</span><span lang="en">I’m young</span></b><small><span lang="zh">高中生 · 大学生 · 年轻成年人</span><span lang="en">High school · College · Young adult</span></small></span><span class="ar">→</span></a>
@@ -1031,6 +1133,72 @@ const eico = [
 const eth = [['不贴标签', 'No labels', '安静、慢，不等于神经多样性', 'Quiet or slow ≠ neurodivergent'], ['不追问诊断', 'No diagnoses', '医疗信息不是必须数据', 'Medical info isn’t needed'], ['随时退出', 'Leave anytime', '任何问题都可以跳过', 'Skip any question'], ['匿名编号', 'Anonymous IDs', 'Y01、O01，不写真名', 'Y01, O01, never names'], ['先同意', 'Consent first', '未经同意不录音、不公开', 'Nothing recorded or shared without consent'], ['不做治疗声明', 'No treatment claims', '不声称改善任何状况', 'No claims to treat anything'], ['适当流程', 'Proper oversight', '由家属 / 机构 / 导师把关', 'Family, care orgs, mentors'], ['人比数据重要', 'People over data', '尊重每个人的节奏', 'Every rhythm is respected']];
 $('#eth').innerHTML = eth.map((e, i) => `<div class="eth reveal d${i % 4} ${i === 7 ? 'hl' : ''}"><svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${eico[i]}</svg><b>${L(e[0], e[1])}</b><span>${L(e[2], e[3])}</span></div>`).join('');
 
+
+
+/* ---------- podcast ---------- */
+const P = { coal: '#262634', blue: '#2A36E8', orange: '#FF5A2C', sky: '#AEBBFF', ink: '#0D0D12', paper: '#F3F1EC' };
+const eps = [
+  { en: 'Do We Have to Talk to Connect?', zh: '一定要说话，才算连接吗？', f: ['沉默与安静陪伴', 'Silence & quiet company'], g: ['年轻人 + 老年人', 'Young & old'], c: ['blue', 'paper', 'orange'],
+    q: [['你会把沉默理解成尴尬、疏远，还是舒服？', 'Is silence awkward, distant, or comfortable to you?'], ['有没有一个人，不需要一直讲话也很亲近？', 'Is there someone you feel close to without talking much?'], ['“陪伴”一定需要聊天吗？', 'Does keeping someone company require conversation?']] },
+  { en: 'Wait for Me', zh: '等等我', f: ['回应速度、等待与被打断', 'Pace, waiting & interruption'], g: ['老年人 + 年轻人 + 节奏不同的人', 'Elders, youth & different paces'], c: ['orange', 'ink', 'paper'],
+    q: [['有没有别人替你把话说完的经历？', 'Has someone ever finished your sentence for you?'], ['等多久算耐心，多久开始尴尬？', 'How long is patient, and when does it get awkward?'], ['回应速度和一个人的能力有关吗？', 'Does response speed say anything about ability?']] },
+  { en: 'When Help Becomes Interference', zh: '当帮助变成打扰', f: ['帮助、独立与越界', 'Help, independence & overstepping'], g: ['年轻人 + 老年人 + 照护者', 'Youth, elders & caregivers'], c: ['sky', 'ink', 'blue'],
+    q: [['有没有人好心帮你，你其实不想被帮？', 'Ever been helped when you didn’t want to be?'], ['直接帮忙，还是先问“你需要我帮吗”？', 'Just help, or ask “do you need help?” first?'], ['什么时候该上前，什么时候该退后？', 'When to step in, and when to step back?']] },
+  { en: 'Don’t Fix Me', zh: '别急着“修好”我', f: ['神经多样性：理解与纠正', 'Neurodiversity: understand, don’t correct'], g: ['亲历者与家庭 + 教育者 / 社工', 'Lived experience, educators, social workers'], c: ['paper', 'ink', 'orange'],
+    q: [['有人“纠正”过一种其实只是不同的表达方式吗？', 'Has someone tried to “correct” a way of expressing that was just different?'], ['什么样的支持，让人觉得自己是“待修复的问题”？', 'What kind of support makes someone feel like a problem to fix?'], ['环境可以怎么调整，而不是只要求个人改变？', 'How can environments adapt instead of asking people to change?']] },
+  { en: 'Same Person, Different Frequency', zh: '同一个人，不同的频率', f: ['沟通偏好', 'Communication preferences'], g: ['各年龄段 + 不同沟通风格', 'All ages & styles'], c: ['coal', 'paper', 'orange'],
+    q: [['你最舒服的交流方式是什么？', 'What’s your most comfortable way to communicate?'], ['别人通常会误判你的哪种沟通偏好？', 'Which of your preferences do people usually misread?'], ['你的“沟通说明书”最重要的三条是什么？', 'The top three lines in your personal communication manual?']] },
+  { en: 'Why Tell the Same Story Again?', zh: '为什么总讲同一个故事？', f: ['重复故事、记忆与意义', 'Repeated stories, memory & meaning'], g: ['老年人 + 年轻家庭成员', 'Elders & young family members'], c: ['blue', 'sky', 'orange'],
+    q: [['有没有一个你很喜欢反复讲的故事？', 'Is there a story you love telling again and again?'], ['同一个故事，每次讲的意义会不同吗？', 'Does a story mean something different each time?'], ['什么样的回应，让讲故事的人觉得被听见？', 'What response makes a storyteller feel truly heard?']] },
+  { en: 'Music When Words Don’t Work', zh: '说不出口时，就听音乐', f: ['音乐、声音与非语言连接', 'Music, sound & non-verbal connection'], g: ['年轻人 + 老年人 + 音乐 / 养老从业者', 'Youth, elders, music & care workers'], c: ['orange', 'ink', 'blue'],
+    q: [['有没有一首歌，立刻让你想到某个人？', 'Is there a song that instantly brings someone to mind?'], ['有些话，是否用音乐比说出来更容易？', 'Are some things easier to say through music?'], ['不以“聊天”为中心的陪伴，你会怎么设计？', 'How would you design time together that isn’t about talking?']] },
+  { en: 'You Don’t Have to Agree With Me', zh: '你不必同意我', f: ['代际分歧：理解不等于认同', 'Understanding isn’t agreeing'], g: ['年轻人 + 老年人', 'Young & old'], c: ['coal', 'orange', 'sky'],
+    q: [['有没有一次没被说服，却开始理解对方？', 'Ever not been convinced, but started to understand?'], ['“我理解你”和“我同意你”有什么区别？', 'What’s the difference between “I understand” and “I agree”?'], ['哪句话最容易让讨论变成争吵？', 'Which phrase turns a discussion into a fight?']] },
+  { en: 'How Close Is Close Enough?', zh: '多近才算亲近？', f: ['距离、边界、独处与亲密', 'Distance, boundaries & closeness'], g: ['年轻人 + 老年人', 'Young & old'], c: ['sky', 'blue', 'orange'],
+    q: [['关系亲近，一定需要经常联系吗？', 'Does being close require keeping in touch often?'], ['独处和孤独，有什么区别？', 'What’s the difference between solitude and loneliness?'], ['什么时候，关心会变成压力？', 'When does care turn into pressure?']] },
+  { en: 'Same Frequency?', zh: '同频？', f: ['回访：我们需要变得一样吗？', 'Revisited: must we become the same?'], g: ['前 9 期受访者回访', 'Returning guests from EP01–09'], c: ['coal', 'orange', 'sky'],
+    q: [['你改变了对另一代人的哪个假设？', 'Which assumption about the other generation did you change?'], ['你最希望别人先问你什么，而不是先假设？', 'What do you wish people would ask, instead of assume?'], ['“同频”是想法一样，还是彼此听得见？', 'Is being on the same frequency thinking alike, or hearing each other?']] },
+];
+const sine = (y, a, per, x0 = 0, x1 = 200, ph = 0) => { let d = ''; for (let x = x0; x <= x1; x += 2) d += (x === x0 ? 'M' : 'L') + x + ' ' + (y + Math.sin((x / per) * Math.PI * 2 + ph) * a).toFixed(1); return d; };
+function art(i, label = false) {
+  const [bg, fg, ac] = eps[i].c.map(k => P[k]); let g = '';
+  const st = (c, w = 3, o = 1) => `fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" opacity="${o}"`;
+  switch (i) {
+    case 0: g = `<path d="${sine(88, 14, 22, 14, 50)}" ${st(fg)}/><path d="M50 88H150" ${st(fg)}/><path d="${sine(88, 14, 22, 150, 186)}" ${st(ac)}/><circle cx="88" cy="120" r="3" fill="${fg}" opacity=".6"/><circle cx="100" cy="120" r="3" fill="${fg}" opacity=".6"/><circle cx="112" cy="120" r="3" fill="${fg}" opacity=".6"/>`; break;
+    case 1: { let x = 18; for (let k = 0; k < 8; k++) { g += `<circle cx="${x}" cy="80" r="${k === 7 ? 9 : 6}" fill="${k === 7 ? ac : fg}"/>`; x += 13 + k * 3.2; } g += `<path d="${sine(118, 10, 60, 14, 186)}" ${st(fg, 2.5, .5)}/>`; break; }
+    case 2: for (let r = 10; r < 110; r += 10) { g += `<circle cx="72" cy="86" r="${r}" ${st(fg, 1.6, .55)}/><circle cx="128" cy="86" r="${r}" ${st(ac, 1.6, .7)}/>`; } break;
+    case 3: for (let r = 0; r < 5; r++) for (let c = 0; c < 7; c++) { const odd = r === 2 && c === 4; g += odd ? `<rect x="${22 + c * 26 - 9}" y="${30 + r * 22 - 9}" width="18" height="18" rx="3" fill="${ac}" transform="rotate(20 ${22 + c * 26} ${30 + r * 22})"/>` : `<circle cx="${22 + c * 26}" cy="${30 + r * 22}" r="6" fill="${fg}"/>`; } break;
+    case 4: for (let k = 0; k < 6; k++) g += `<path d="${sine(34 + k * 19, 7, 90 / (k + 1) + 10)}" ${st(k === 3 ? ac : fg, 2.5, k === 3 ? 1 : .8)}/>`; break;
+    case 5: { let d = ''; for (let t = 0; t < 26; t += .15) { const r = 3 + t * 2.4; d += (t ? 'L' : 'M') + (100 + Math.cos(t) * r).toFixed(1) + ' ' + (82 + Math.sin(t) * r * .82).toFixed(1); } g = `<path d="${d}" ${st(fg, 2.4)}/><circle cx="100" cy="82" r="6" fill="${ac}"/>`; break; }
+    case 6: for (let k = 0; k < 17; k++) { const h = 10 + Math.abs(Math.sin(k * .7) * Math.cos(k * .23)) * 80; g += `<rect x="${14 + k * 10.4}" y="${88 - h / 2}" width="6" height="${h}" rx="3" fill="${k % 5 === 2 ? ac : fg}"/>`; } break;
+    case 7: g = `<path d="${sine(84, 30, 100)}" ${st(fg, 4)}/><path d="${sine(84, 30, 100, 0, 200, Math.PI)}" ${st(ac, 4)}/>`; break;
+    case 8: g = `<circle cx="78" cy="84" r="46" fill="${fg}"/><circle cx="134" cy="84" r="46" fill="none" stroke="${ac}" stroke-width="4"/><circle cx="106" cy="84" r="4" fill="${bg}"/>`; break;
+    case 9: g = `<path d="${sine(84, 32, 120)}" ${st(fg, 3.2)}/><path d="${sine(84, 22, 80)}" ${st(ac, 3.2)}/><text x="168" y="54" font-family="Archivo,sans-serif" font-weight="900" font-size="44" fill="${ac}" text-anchor="middle">?</text>`; break;
+  }
+  return { svg: `<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect width="200" height="200" fill="${bg}"/>${g}${label ? '' : `<rect y="146" width="200" height="54" fill="${bg}" opacity=".9"/>`}</svg>`, fg };
+}
+$('#covers').innerHTML = eps.map((e, i) => { const a = art(i); return `
+  <button class="cov reveal d${i % 4}" data-i="${i}" aria-label="EP${String(i + 1).padStart(2, '0')} ${e.en}">
+    <span class="art">${a.svg}<span class="n" style="color:${a.fg}">EP${String(i + 1).padStart(2, '0')}</span><span class="t" style="color:${a.fg}">${e.en}</span><span class="pl"><svg width="10" height="10" viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z" fill="currentColor"/></svg></span></span>
+    <span class="meta"><small>EP${String(i + 1).padStart(2, '0')}</small>${L(e.zh, e.f[1])}</span>
+  </button>`; }).join('');
+let ep = 0;
+function showEp(i, anim = true) {
+  ep = (i + eps.length) % eps.length; const e = eps[ep], np = $('#np'), deck = $('#deck');
+  document.querySelectorAll('.cov').forEach((c, j) => c.classList.toggle('on', j === ep));
+  const fill = () => {
+    $('#npNo').textContent = String(ep + 1).padStart(2, '0');
+    $('#npTitle').textContent = e.en; $('#npZh').innerHTML = e.zh;
+    $('#npMeta').innerHTML = `<span><em>${L('焦点', 'Focus')}</em>${L(e.f[0], e.f[1])}</span><span><em>${L('受访者', 'Voices')}</em>${L(e.g[0], e.g[1])}</span>`;
+    $('#npQs').innerHTML = e.q.map(q => `<li>${L(q[0], q[1])}</li>`).join('');
+    $('#vLabel').innerHTML = art(ep, true).svg;
+    np.classList.remove('out'); deck.classList.remove('swap');
+  };
+  if (anim) { np.classList.add('out'); deck.classList.add('swap'); setTimeout(fill, 300); } else fill();
+}
+showEp(0, false);
+$('#covers').addEventListener('click', e => { const c = e.target.closest('.cov'); if (!c) return; showEp(+c.dataset.i); if (innerWidth < 860) $('#deck').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+$('#npPrev').onclick = () => showEp(ep - 1); $('#npNext').onclick = () => showEp(ep + 1);
 
 /* ---------- sign-up form (saved locally) ---------- */
 const KEY = 'sf-signups';
