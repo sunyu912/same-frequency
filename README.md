@@ -1,6 +1,6 @@
 # 同频 Same Frequency
 
-Bilingual (中文 / English) landing page for **Same Frequency**, a student research project on intergenerational communication, communication differences and neurodiversity.
+Bilingual (中文 / English) landing page for **Same Frequency**, an intergenerational communication research and podcast initiative on intergenerational communication, communication differences and neurodiversity.
 
 - `index.html` — the whole site (inline CSS + JS, no build step)
 - `assets/` — photography
