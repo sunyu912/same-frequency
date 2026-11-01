@@ -313,6 +313,10 @@ h2 .o{color:var(--orange)}
 .vlabel::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px;border-radius:50%;background:#0C0C10}
 .arm{position:absolute;right:2%;top:4%;width:42%;height:62%;pointer-events:none;transform-origin:85% 10%;transition:transform .8s var(--ease);transform:rotate(-14deg)}
 .deck.swap .arm{transform:rotate(-24deg)}
+.vinyl{animation-play-state:paused}
+.deck.playing .vinyl{animation-play-state:running;animation-duration:2.2s}
+.deck.playing .arm{transform:rotate(-6deg)}
+.deck.playing.swap .arm{transform:rotate(-24deg)}
 .np .mono{opacity:.6}
 .np-no{display:flex;align-items:baseline;gap:14px;margin:14px 0 4px}
 .np-no b{font-weight:900;font-stretch:125%;font-size:clamp(70px,8vw,120px);line-height:.85;color:var(--orange)}
@@ -333,6 +337,26 @@ h2 .o{color:var(--orange)}
 .np-ctrl .rb:hover{border-color:var(--orange);background:rgba(255,90,44,.12)}
 .np-ctrl .soon{font-family:var(--mono);font-size:11px;letter-spacing:.06em;opacity:.55;margin-left:4px}
 .np-ctrl .pillbtn{margin-left:auto}
+.np-status{display:inline-flex;align-items:center;gap:8px}
+.np-status .live{display:none;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 0 rgba(255,90,44,.6);animation:pulse 1.6s infinite}
+.np.avail .np-status .live{display:inline-block}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(255,90,44,0)}100%{box-shadow:0 0 0 0 rgba(255,90,44,0)}}
+.audio-row{display:flex;align-items:center;gap:14px;margin-top:28px}
+.playbtn{flex:none;width:64px;height:64px;border-radius:50%;background:var(--orange);color:var(--ink);display:grid;place-items:center;transition:transform .25s var(--ease),background .25s;box-shadow:0 10px 30px -10px rgba(255,90,44,.7)}
+.playbtn:hover{transform:scale(1.06)}
+.playbtn:disabled{background:rgba(255,255,255,.08);color:rgba(255,255,255,.35);box-shadow:none;cursor:not-allowed;transform:none}
+.track{flex:1;min-width:0}
+.track .tt{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.04em;opacity:.65;margin-bottom:8px}
+.seek{position:relative;height:28px;cursor:pointer;touch-action:none}
+.seek .wave{position:absolute;inset:0;display:flex;align-items:center;gap:2px}
+.seek .wave i{flex:1;border-radius:2px;background:rgba(255,255,255,.18)}
+.seek .wave i.p{background:var(--orange)}
+.np:not(.avail) .seek{cursor:default;opacity:.35}
+.np:not(.avail) .seek .wave i{background:rgba(255,255,255,.12)}
+.cov .badge2{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:var(--orange);color:var(--ink)}
+.cov .badge2.soon{background:rgba(255,255,255,.08);color:rgba(243,241,236,.55)}
+.cov .art .live-tag{position:absolute;right:10px;top:9px;font-family:var(--mono);font-size:10px;font-weight:600;padding:3px 7px;border-radius:999px;background:var(--ink);color:var(--orange)}
+.cov.has .art .pl{display:none}
 .covers{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:22px}
 .cov{text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:10px}
 .cov .art{position:relative;aspect-ratio:1;border-radius:18px;overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
@@ -669,7 +693,7 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
           <circle cx="180" cy="270" r="9" fill="#0D0D12"/><circle cx="300" cy="270" r="9" fill="#0D0D12"/>
           <circle cx="30" cy="282" r="7" fill="#1C1C24"/><circle cx="450" cy="282" r="7" fill="#1C1C24"/>
         </svg>
-        <a class="eps-link" href="#podcast"><span lang="zh">▶ 收听 10 期播客</span><span lang="en">▶ See all 10 episodes</span> <i>↓</i></a>
+        <a class="eps-link" href="#podcast"><span lang="zh">▶ 收听播客 · 已上线 2 期</span><span lang="en">▶ Listen now · 2 episodes out</span> <i>↓</i></a>
       </div>
       <div class="tiles">
         <div class="tile dark reveal"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></span><b><span lang="zh">10 期播客</span><span lang="en">10-episode podcast</span></b><span class="s"><span lang="zh">真实的声音、停顿与音乐</span><span lang="en">Real voices, pauses, music</span></span></div>
@@ -703,7 +727,7 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
         <svg class="arm" viewBox="0 0 200 300"><circle cx="170" cy="30" r="22" fill="#2A2A34"/><circle cx="170" cy="30" r="9" fill="#F3F1EC"/><path d="M170 30 L150 210 L118 262" fill="none" stroke="#C9C9D2" stroke-width="7" stroke-linecap="round"/><rect x="96" y="252" width="34" height="22" rx="4" transform="rotate(34 113 263)" fill="#FF5A2C"/></svg>
       </div>
       <div class="np" id="np">
-        <div class="mono"><span lang="zh">节目预告 · 即将上线</span><span lang="en">Episode preview · Coming soon</span></div>
+        <div class="mono np-status"><i class="live"></i><span id="npStatus"></span></div>
         <div class="np-fade">
           <div class="np-no"><b id="npNo">01</b><span>/ 10</span></div>
           <h3 id="npTitle"></h3>
@@ -711,6 +735,14 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 34px;overflow:hid
           <div class="np-meta" id="npMeta"></div>
           <ul class="np-qs" id="npQs"></ul>
         </div>
+        <div class="audio-row">
+          <button class="playbtn" id="npPlay" aria-label="Play"></button>
+          <div class="track">
+            <div class="tt"><span id="tCur">0:00</span><span id="tDur">--:--</span></div>
+            <div class="seek" id="seek" role="slider" aria-label="Seek" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="wave" id="seekWave"></div></div>
+          </div>
+        </div>
+        <audio id="epAudio" preload="metadata"></audio>
         <div class="np-ctrl">
           <button class="rb" id="npPrev" aria-label="Previous episode">←</button>
           <button class="rb" id="npNext" aria-label="Next episode">→</button>
@@ -942,6 +974,7 @@ function setTone(base) { if (!audio.ctx) return; const t = audio.ctx.currentTime
 $('#snd').addEventListener('click', () => {
   if (!audio.ctx) { buildAudio(); setTone(stations[curSt >= 0 ? curSt : 0].base); }
   audio.on = !audio.on;
+  if (audio.on && !$('#epAudio').paused) $('#epAudio').pause();
   if (audio.on) audio.ctx.resume();
   audio.master.gain.setTargetAtTime(audio.on ? .8 : 0, audio.ctx.currentTime, .1);
   $('#snd').classList.toggle('on', audio.on); $('#snd').setAttribute('aria-pressed', audio.on);
@@ -1137,9 +1170,9 @@ $('#eth').innerHTML = eth.map((e, i) => `<div class="eth reveal d${i % 4} ${i ==
 /* ---------- podcast ---------- */
 const P = { coal: '#262634', blue: '#2A36E8', orange: '#FF5A2C', sky: '#AEBBFF', ink: '#0D0D12', paper: '#F3F1EC' };
 const eps = [
-  { en: 'Do We Have to Talk to Connect?', zh: '一定要说话，才算连接吗？', f: ['沉默与安静陪伴', 'Silence & quiet company'], g: ['年轻人 + 老年人', 'Young & old'], c: ['blue', 'paper', 'orange'],
+  { audio: 'assets/audio/ep01.m4a', dur: 311, en: 'Do We Have to Talk to Connect?', zh: '一定要说话，才算连接吗？', f: ['沉默与安静陪伴', 'Silence & quiet company'], g: ['年轻人 + 老年人', 'Young & old'], c: ['blue', 'paper', 'orange'],
     q: [['你会把沉默理解成尴尬、疏远，还是舒服？', 'Is silence awkward, distant, or comfortable to you?'], ['有没有一个人，不需要一直讲话也很亲近？', 'Is there someone you feel close to without talking much?'], ['“陪伴”一定需要聊天吗？', 'Does keeping someone company require conversation?']] },
-  { en: 'Wait for Me', zh: '等等我', f: ['回应速度、等待与被打断', 'Pace, waiting & interruption'], g: ['老年人 + 年轻人 + 节奏不同的人', 'Elders, youth & different paces'], c: ['orange', 'ink', 'paper'],
+  { audio: 'assets/audio/ep02.m4a', dur: 217, en: 'Wait for Me', zh: '等等我', f: ['回应速度、等待与被打断', 'Pace, waiting & interruption'], g: ['老年人 + 年轻人 + 节奏不同的人', 'Elders, youth & different paces'], c: ['orange', 'ink', 'paper'],
     q: [['有没有别人替你把话说完的经历？', 'Has someone ever finished your sentence for you?'], ['等多久算耐心，多久开始尴尬？', 'How long is patient, and when does it get awkward?'], ['回应速度和一个人的能力有关吗？', 'Does response speed say anything about ability?']] },
   { en: 'When Help Becomes Interference', zh: '当帮助变成打扰', f: ['帮助、独立与越界', 'Help, independence & overstepping'], g: ['年轻人 + 老年人 + 照护者', 'Youth, elders & caregivers'], c: ['sky', 'ink', 'blue'],
     q: [['有没有人好心帮你，你其实不想被帮？', 'Ever been helped when you didn’t want to be?'], ['直接帮忙，还是先问“你需要我帮吗”？', 'Just help, or ask “do you need help?” first?'], ['什么时候该上前，什么时候该退后？', 'When to step in, and when to step back?']] },
@@ -1176,10 +1209,11 @@ function art(i, label = false) {
   }
   return { svg: `<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice"><rect width="200" height="200" fill="${bg}"/>${g}${label ? '' : `<rect y="146" width="200" height="54" fill="${bg}" opacity=".9"/>`}</svg>`, fg };
 }
+const fmt = t => { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
 $('#covers').innerHTML = eps.map((e, i) => { const a = art(i); return `
-  <button class="cov reveal d${i % 4}" data-i="${i}" aria-label="EP${String(i + 1).padStart(2, '0')} ${e.en}">
-    <span class="art">${a.svg}<span class="n" style="color:${a.fg}">EP${String(i + 1).padStart(2, '0')}</span><span class="t" style="color:${a.fg}">${e.en}</span><span class="pl"><svg width="10" height="10" viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z" fill="currentColor"/></svg></span></span>
-    <span class="meta"><small>EP${String(i + 1).padStart(2, '0')}</small>${L(e.zh, e.f[1])}</span>
+  <button class="cov reveal d${i % 4}${e.audio ? ' has' : ''}" data-i="${i}" aria-label="EP${String(i + 1).padStart(2, '0')} ${e.en}">
+    <span class="art">${a.svg}<span class="n" style="color:${a.fg}">EP${String(i + 1).padStart(2, '0')}</span><span class="t" style="color:${a.fg}">${e.en}</span><span class="pl"><svg width="10" height="10" viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z" fill="currentColor"/></svg></span>${e.audio ? `<span class="live-tag">${fmt(e.dur)}</span>` : ''}</span>
+    <span class="meta"><small>EP${String(i + 1).padStart(2, '0')}</small>${L(e.zh, e.f[1])}<br>${e.audio ? `<span class="badge2">▶ ${L('可收听', 'Listen now')}</span>` : `<span class="badge2 soon">${L('即将上线', 'Coming soon')}</span>`}</span>
   </button>`; }).join('');
 let ep = 0;
 function showEp(i, anim = true) {
@@ -1191,12 +1225,55 @@ function showEp(i, anim = true) {
     $('#npMeta').innerHTML = `<span><em>${L('焦点', 'Focus')}</em>${L(e.f[0], e.f[1])}</span><span><em>${L('受访者', 'Voices')}</em>${L(e.g[0], e.g[1])}</span>`;
     $('#npQs').innerHTML = e.q.map(q => `<li>${L(q[0], q[1])}</li>`).join('');
     $('#vLabel').innerHTML = art(ep, true).svg;
+    loadEp();
     np.classList.remove('out'); deck.classList.remove('swap');
   };
   if (anim) { np.classList.add('out'); deck.classList.add('swap'); setTimeout(fill, 300); } else fill();
 }
+/* real audio player */
+const au = $('#epAudio'), npEl = $('#np'), deckEl = $('#deck'), playBtn = $('#npPlay');
+const icPlayL = '<svg width="22" height="22" viewBox="0 0 14 14"><path d="M3.5 1.5v11l9-5.5z" fill="currentColor"/></svg>';
+const icPauseL = '<svg width="20" height="20" viewBox="0 0 14 14"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" fill="currentColor"/></svg>';
+const NB = 64;
+function waveBars(seed) { $('#seekWave').innerHTML = Array.from({ length: NB }, (_, k) => `<i style="height:${(22 + Math.abs(Math.sin(k * .37 + seed) * Math.cos(k * .11 + seed * 2)) * 78).toFixed(0)}%"></i>`).join(''); }
+function paintProgress() {
+  const d = au.duration || eps[ep].dur || 0, p = d ? au.currentTime / d : 0, n = Math.round(p * NB);
+  $('#seekWave').querySelectorAll('i').forEach((b, k) => b.classList.toggle('p', k < n));
+  $('#tCur').textContent = fmt(au.currentTime); $('#seek').setAttribute('aria-valuenow', Math.round(p * 100));
+}
+function setPlayingUI(on) {
+  deckEl.classList.toggle('playing', on); playBtn.innerHTML = on ? icPauseL : icPlayL;
+  playBtn.setAttribute('aria-label', on ? 'Pause' : 'Play');
+}
+function loadEp() {
+  const e = eps[ep], has = !!e.audio;
+  if (au.dataset.ep !== String(ep)) { au.pause(); if (has) { au.src = e.audio; au.dataset.ep = ep; } else { au.removeAttribute('src'); au.dataset.ep = ''; au.load(); } }
+  npEl.classList.toggle('avail', has);
+  playBtn.disabled = !has; setPlayingUI(has && !au.paused);
+  $('#npStatus').innerHTML = has ? L('现已上线 · 点击播放', 'Out now · Press play') : L('节目预告 · 即将上线', 'Preview · Coming soon');
+  $('#tDur').textContent = has ? fmt(e.dur) : L('即将上线', 'SOON'); $('#tCur').textContent = '0:00';
+  waveBars(ep + 1); paintProgress();
+  if ('mediaSession' in navigator && has) navigator.mediaSession.metadata = new MediaMetadata({ title: `EP${String(ep + 1).padStart(2, '0')} ${e.en}`, artist: '同频 Same Frequency', album: e.zh });
+}
+function togglePlay() {
+  if (!eps[ep].audio) return;
+  if (au.paused) { if (audio.on) $('#snd').click(); au.play().catch(() => {}); } else au.pause();
+}
+playBtn.addEventListener('click', togglePlay);
+au.addEventListener('play', () => setPlayingUI(true));
+au.addEventListener('pause', () => setPlayingUI(false));
+au.addEventListener('timeupdate', paintProgress);
+au.addEventListener('loadedmetadata', () => { if (isFinite(au.duration)) $('#tDur').textContent = fmt(au.duration); });
+au.addEventListener('ended', () => { setPlayingUI(false); au.currentTime = 0; paintProgress(); const nx = eps.findIndex((e, j) => j > ep && e.audio); if (nx > -1) { showEp(nx); setTimeout(() => au.play().catch(() => {}), 450); } });
+const seekEl = $('#seek'); let seeking = false;
+const seekTo = x => { const r = seekEl.getBoundingClientRect(), d = au.duration || eps[ep].dur; if (!eps[ep].audio || !d) return; au.currentTime = Math.min(1, Math.max(0, (x - r.left) / r.width)) * d; paintProgress(); };
+seekEl.addEventListener('pointerdown', e => { if (!eps[ep].audio) return; seeking = true; try { seekEl.setPointerCapture(e.pointerId); } catch (_) {} seekTo(e.clientX); });
+seekEl.addEventListener('pointermove', e => { if (seeking) seekTo(e.clientX); });
+seekEl.addEventListener('pointerup', () => seeking = false);
+seekEl.addEventListener('keydown', e => { if (!eps[ep].audio) return; if (e.key === 'ArrowRight') au.currentTime += 10; if (e.key === 'ArrowLeft') au.currentTime -= 10; if (e.key === ' ') { e.preventDefault(); togglePlay(); } });
+if ('mediaSession' in navigator) { navigator.mediaSession.setActionHandler('play', () => au.play()); navigator.mediaSession.setActionHandler('pause', () => au.pause()); }
 showEp(0, false);
-$('#covers').addEventListener('click', e => { const c = e.target.closest('.cov'); if (!c) return; showEp(+c.dataset.i); if (innerWidth < 860) $('#deck').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+$('#covers').addEventListener('click', e => { const c = e.target.closest('.cov'); if (!c) return; if (+c.dataset.i === ep && eps[ep].audio) { togglePlay(); return; } showEp(+c.dataset.i); if (innerWidth < 860) $('#deck').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 $('#npPrev').onclick = () => showEp(ep - 1); $('#npNext').onclick = () => showEp(ep + 1);
 
 /* ---------- sign-up form (saved locally) ---------- */
